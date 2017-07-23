@@ -89,7 +89,7 @@ public class login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(nombre.getText().equals("port") && pass.getText().equals("port")){
+        if(nombre.getText().equals("port1") && pass.getText().equals("port")){
          
             evenstp a = new evenstp();
             JOptionPane.showMessageDialog(null,"Bienvenido");
