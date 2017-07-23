@@ -91,14 +91,14 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(nombre.getText().equals("port") && pass.getText().equals("port")){
          
-            evenstp a = new evenstp();
+            portero a = new portero();
             JOptionPane.showMessageDialog(null,"Bienvenido");
                 a.setVisible(true);
                 dispose();
             
         }
         else if(nombre.getText().equals("admin") &&  pass.getText().equals("admin")){
-            evensta a = new evensta();
+            admin a = new admin();
             JOptionPane.showMessageDialog(null,"Bienvenido Administrador");
                 a.setVisible(true);
                 dispose();

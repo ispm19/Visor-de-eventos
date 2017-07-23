@@ -5,18 +5,16 @@
  */
 package ventanas;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Garcia
  */
-public class evenstp extends javax.swing.JFrame {
+public class portero extends javax.swing.JFrame {
 
     /**
-     * Creates new form evenstp
+     * Creates new form portero
      */
-    public evenstp() {
+    public portero() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -31,7 +29,6 @@ public class evenstp extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -50,8 +47,9 @@ public class evenstp extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -63,7 +61,6 @@ public class evenstp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 90, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 640, 10));
 
         jButton2.setText("Buscar");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, -1, -1));
@@ -150,19 +147,20 @@ public class evenstp extends javax.swing.JFrame {
 
         jLabel7.setText("Lista de eventos proximos");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 640, 10));
 
         jButton3.setText("Registrar visita de invitado");
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, 190, 30));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-                login a = new login();
-                a.setVisible(true);
-                dispose();
+        login a = new login();
+        a.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -182,20 +180,20 @@ public class evenstp extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(evenstp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(portero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(evenstp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(portero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(evenstp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(portero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(evenstp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(portero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new evenstp().setVisible(true);
+                new portero().setVisible(true);
             }
         });
     }
