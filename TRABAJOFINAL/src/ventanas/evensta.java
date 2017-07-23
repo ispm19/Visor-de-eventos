@@ -52,7 +52,7 @@ public class evensta extends javax.swing.JFrame {
         jButton2.setText("USUARIOS");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 100, 60));
 
-        jButton3.setText("EVENSTOS");
+        jButton3.setText("EVENTOS");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
