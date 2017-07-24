@@ -25,9 +25,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Garcia
  */
 public class eventos extends javax.swing.JFrame {
-    private PreparedStatement psInsertar;
-        private Statement stmmt;
+        private PreparedStatement psInsertar;
         private Connection con;
+        private Statement stmmt;
+        private static final String driver="com.mysql.jdbc.Driver";
+        private static final String url="jdbc:mysql://localhost:3306/trabajofinal";
         
     /**
      * Creates new form eventos
@@ -35,9 +37,51 @@ public class eventos extends javax.swing.JFrame {
     public eventos() throws SQLException {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        mostrar();
     }
-  
+  public static  Connection getConexion() {
+        Connection cn=null;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            cn=DriverManager.getConnection(url,"root","");         
+        }
+        catch(Exception e){
+         System.out.println(String.valueOf(e));}
+        return cn;
+    }
+    
+    public static ResultSet getTabla(String Consulta){
+        Connection cn=getConexion();
+        Statement st;
+        ResultSet datos=null;
+        try{
+            st=cn.createStatement();
+            datos=st.executeQuery(Consulta);            
+        }
+        catch(Exception e){ System.out.print(e.toString());}
+        return datos;
+    }    
+    // funcion para rellenar la tabla
+    private void mostrar() {        
+        DefaultTableModel modelo = new DefaultTableModel();               
+        ResultSet rs = getTabla("select Nombre,Ubicacion,Tipo,Fecha from eventos");
+        modelo.setColumnIdentifiers(new Object[]{"Nombre", "Ubicacion","Tipo","Fecha"});
+        try {
+            while (rs.next()) {
+                // añade los resultado a al modelo de tabla
+                modelo.addRow(new Object[]{rs.getString("Nombre"), 
+                rs.getString("Ubicacion"),
+                rs.getString("Tipo"),
+                rs.getString("Fecha")});
+                
+            }            
+            // asigna el modelo a la tabla
+            table.setModel(modelo);            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
            
             
     
@@ -90,15 +134,15 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
 
         jLabel3.setText("Fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
 
         jLabel4.setText("Ubicacion");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
         getContentPane().add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 90, -1));
 
         jLabel5.setText("Tipo de evento");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 100, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 100, -1));
 
         jButton1.setText("AGREGAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,31 +150,31 @@ public class eventos extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 100, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 100, 30));
 
         jLabel6.setText("Eventos en curso");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 360, 10));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 360, 10));
 
         jScrollPane1.setViewportView(table);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 350, 260));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 350, 260));
 
         jLabel7.setText("Nombre");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 80, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 650, 90, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, -1, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 80, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 90, -1));
 
         jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, -1, -1));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, 90, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, -1, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 90, -1));
 
         jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 630, -1, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 100, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, -1, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 620, 100, -1));
 
         jButton2.setText("Modificar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, 80, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 80, -1));
 
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -141,11 +185,11 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, -1, -1));
 
         jLabel11.setText("EDITAR");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 440, 10));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 440, 10));
 
         jButton4.setText("Borrar");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, 80, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 80, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
