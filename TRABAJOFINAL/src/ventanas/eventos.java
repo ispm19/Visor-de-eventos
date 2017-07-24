@@ -30,6 +30,8 @@ public class eventos extends javax.swing.JFrame {
         private Statement stmmt;
         private static final String driver="com.mysql.jdbc.Driver";
         private static final String url="jdbc:mysql://localhost:3306/trabajofinal";
+        Date now = new Date(System.currentTimeMillis());
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         
     /**
      * Creates new form eventos
@@ -38,6 +40,7 @@ public class eventos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mostrar();
+        
     }
   public static  Connection getConexion() {
         Connection cn=null;
@@ -231,8 +234,7 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Date now = new Date(System.currentTimeMillis());
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+
                
         
         
@@ -275,7 +277,7 @@ public class eventos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
                 b.setVisible(true);
             } catch (SQLException ex) {
-                Logger.getLogger(eventos.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null,ex);
             }
        
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -292,8 +294,7 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
