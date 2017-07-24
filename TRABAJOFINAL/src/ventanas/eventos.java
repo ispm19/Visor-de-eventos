@@ -5,22 +5,42 @@
  */
 package ventanas;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Garcia
  */
 public class eventos extends javax.swing.JFrame {
-
+    private PreparedStatement psInsertar;
+        private Statement stmmt;
+        private Connection con;
+        
     /**
      * Creates new form eventos
      */
-    public eventos() {
+    public eventos() throws SQLException {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
+  
+           
+            
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,17 +54,17 @@ public class eventos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        ubicacion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tipo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
@@ -56,6 +76,7 @@ public class eventos extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,18 +87,18 @@ public class eventos extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
 
         jLabel3.setText("Fecha");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, -1, -1));
 
         jLabel4.setText("Ubicacion");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 90, -1));
+        getContentPane().add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 90, -1));
 
         jLabel5.setText("Tipo de evento");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 100, -1));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 100, -1));
 
         jButton1.setText("AGREGAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -91,18 +112,7 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 360, 10));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 350, 260));
 
@@ -120,7 +130,7 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 100, -1));
 
         jButton2.setText("Modificar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, -1, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, 80, -1));
 
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +143,9 @@ public class eventos extends javax.swing.JFrame {
         jLabel11.setText("EDITAR");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 440, 10));
+
+        jButton4.setText("Borrar");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, 80, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,7 +161,37 @@ public class eventos extends javax.swing.JFrame {
         // TODO add your handling code here:
         Date now = new Date(System.currentTimeMillis());
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(date.format(now));
+               
+        
+        
+        
+        try {
+            // TODO add your handling code here
+
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            psInsertar = con.prepareStatement("INSERT INTO eventos (Nombre,Ubicacion,Fecha,Tipo)"+" values(?,?,?,?)");
+
+            
+          
+            
+            psInsertar.setString(1,nombre.getText());
+            psInsertar.setString(2,ubicacion.getText());
+            psInsertar.setString(3,date.format(now));
+            psInsertar.setString(4,tipo.getText());
+            psInsertar.getResultSet();
+            psInsertar.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Datos agregados exitosamente");
+
+            nombre.setText(null);
+            ubicacion.setText(null);
+            tipo.setText(null);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -181,7 +224,11 @@ public class eventos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new eventos().setVisible(true);
+                try {
+                    new eventos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(eventos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -190,6 +237,7 @@ public class eventos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -204,13 +252,13 @@ public class eventos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTable table;
+    private javax.swing.JTextField tipo;
+    private javax.swing.JTextField ubicacion;
     // End of variables declaration//GEN-END:variables
 }
