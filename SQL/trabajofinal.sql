@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-07-2017 a las 01:15:00
+-- Tiempo de generación: 24-07-2017 a las 02:04:09
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -32,6 +32,19 @@ CREATE TABLE `eventos` (
   `Tipo` varchar(30) NOT NULL,
   `Fecha` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `eventos`
+--
+
+INSERT INTO `eventos` (`Nombre`, `Ubicacion`, `Tipo`, `Fecha`) VALUES
+('asd', 'asd', 'asd', '2017-07-23'),
+('club cocacola', 'la nuñez', 'social', '2017-07-23'),
+('aaa', 'aa', '', '2017-07-23'),
+('', '', 'a', '2017-07-23'),
+('ada', 'asd', 'asd', '2017-07-23'),
+('asd1', 'asd', 'asdaaaa', '2017-07-23'),
+('asd1111', 'asd', 'asd', '2017-07-23');
 
 --
 -- Índices para tablas volcadas
