@@ -257,7 +257,7 @@ public class eventos extends javax.swing.JFrame {
             psInsertar.getResultSet();
             psInsertar.executeUpdate();
 
-            JOptionPane.showMessageDialog(null,"Datos agregados exitosamente");
+            JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
 
             nombre.setText(null);
             ubicacion.setText(null);
