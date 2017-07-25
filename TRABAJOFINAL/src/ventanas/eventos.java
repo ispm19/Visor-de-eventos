@@ -33,6 +33,7 @@ public class eventos extends javax.swing.JFrame {
         Date now = new Date(System.currentTimeMillis());
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         
+        
     /**
      * Creates new form eventos
      */
@@ -40,6 +41,7 @@ public class eventos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mostrar();
+        id.setEditable(false);
         
     }
   public static  Connection getConexion() {
@@ -127,6 +129,8 @@ public class eventos extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -175,7 +179,7 @@ public class eventos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 610, 260));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 450, 260));
 
         jLabel7.setText("Nombre");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, -1, -1));
@@ -228,6 +232,16 @@ public class eventos extends javax.swing.JFrame {
 
         jButton6.setText("Actualizar");
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, -1, -1));
+
+        jLabel10.setText("ID");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, -1, -1));
+
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 40, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -288,10 +302,11 @@ public class eventos extends javax.swing.JFrame {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
         int rec = table.getSelectedRow();
-        nombre2.setText(table.getValueAt(rec, 0).toString());
-        ubicacion2.setText(table.getValueAt(rec, 1).toString());
-        tipo2.setText(table.getValueAt(rec, 2).toString());
-        fecha2.setText(table.getValueAt(rec, 3).toString());
+        id.setText(table.getValueAt(rec, 0).toString());
+        nombre2.setText(table.getValueAt(rec, 1).toString());
+        ubicacion2.setText(table.getValueAt(rec, 2).toString());
+        tipo2.setText(table.getValueAt(rec, 3).toString());
+        fecha2.setText(table.getValueAt(rec, 4).toString());
         
     }//GEN-LAST:event_tableMouseClicked
 
@@ -307,6 +322,10 @@ public class eventos extends javax.swing.JFrame {
     private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ubicacionActionPerformed
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,6 +368,7 @@ public class eventos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField fecha2;
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -356,6 +376,7 @@ public class eventos extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
