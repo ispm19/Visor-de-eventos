@@ -67,12 +67,13 @@ public class eventos extends javax.swing.JFrame {
     // funcion para rellenar la tabla
     private void mostrar() {        
         DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = getTabla("select Nombre,Ubicacion,Tipo,Fecha from eventos");
-        modelo.setColumnIdentifiers(new Object[]{"Nombre", "Ubicacion","Tipo","Fecha"});
+        ResultSet rs = getTabla("select ID,Nombre,Ubicacion,Tipo,Fecha from eventos");
+        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Ubicacion","Tipo","Fecha"});
         try {
             while (rs.next()) {
                 // añade los resultado a al modelo de tabla
-                modelo.addRow(new Object[]{rs.getString("Nombre"), 
+                modelo.addRow(new Object[]{rs.getString("ID"),
+               rs.getString("Nombre"), 
                 rs.getString("Ubicacion"),
                 rs.getString("Tipo"),
                 rs.getString("Fecha")});
@@ -136,18 +137,24 @@ public class eventos extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 130, -1));
 
         jLabel3.setText("Fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, -1, -1));
 
         jLabel4.setText("Ubicacion");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
-        getContentPane().add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 90, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        ubicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ubicacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 130, -1));
 
         jLabel5.setText("Tipo de evento");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
-        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 100, -1));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -155,11 +162,11 @@ public class eventos extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 80, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, -1));
 
-        jLabel6.setText("Eventos en curso");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 360, 10));
+        jLabel6.setText("EVENTOS EN CURSO");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 360, 10));
 
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,20 +175,20 @@ public class eventos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 350, 260));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 610, 260));
 
         jLabel7.setText("Nombre");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, -1, -1));
-        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 80, -1));
-        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 90, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, -1, -1));
+        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 130, -1));
+        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 130, -1));
 
         jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, -1, -1));
-        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 90, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
+        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, 130, -1));
 
         jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, -1, -1));
-        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 620, 100, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 730, -1, -1));
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 750, 130, -1));
 
         jButton2.setText("Modificar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +196,7 @@ public class eventos extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 80, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 600, 80, -1));
 
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -200,8 +207,8 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, -1, 30));
 
         jLabel11.setText("EDITAR");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 440, 10));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 440, 10));
 
         jButton4.setText("Borrar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +216,7 @@ public class eventos extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 80, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 680, 80, -1));
 
         jButton5.setText("Actualizar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -217,10 +224,10 @@ public class eventos extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
 
         jButton6.setText("Actualizar");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 580, -1, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,26 +241,22 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
-               
-        
-        
-        
         try {
             // TODO add your handling code here
 
             String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
             con = DriverManager.getConnection(url);
             stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("INSERT INTO eventos (Nombre,Ubicacion,Fecha,Tipo)"+" values(?,?,?,?)");
+            psInsertar = con.prepareStatement("INSERT INTO eventos (Nombre,Ubicacion,Tipo,Fecha)"+" values(?,?,?,?)");
 
             
           
             
             psInsertar.setString(1,nombre.getText());
             psInsertar.setString(2,ubicacion.getText());
-            psInsertar.setString(3,date.format(now));
-            psInsertar.setString(4,tipo.getText());
+            psInsertar.setString(3,tipo.getText());
+            psInsertar.setString(4,date.format(now));
+            
             psInsertar.getResultSet();
             psInsertar.executeUpdate();
 
@@ -300,6 +303,10 @@ public class eventos extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ubicacionActionPerformed
 
     /**
      * @param args the command line arguments
