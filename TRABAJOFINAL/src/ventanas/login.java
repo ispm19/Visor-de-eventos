@@ -7,7 +7,7 @@ package ventanas;
 
 import javax.swing.JOptionPane;
 import conexion.conectar;
-
+/// Alexander was here 
 /**
  *
  * @author Garcia
@@ -92,7 +92,7 @@ public class login extends javax.swing.JFrame {
         if(nombre.getText().equals("port") && pass.getText().equals("port")){
          
             portero a = new portero();
-            JOptionPane.showMessageDialog(null,"Bienvenido");
+            JOptionPane.showMessageDialog(null,"Bienvenido al Gestor de eventos");
                 a.setVisible(true);
                 dispose();
             
