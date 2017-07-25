@@ -25,13 +25,10 @@ import javax.swing.table.DefaultTableModel;
  * @author Garcia
  */
 public class eventos extends javax.swing.JFrame {
-        private PreparedStatement psInsertar;
-        private Connection con;
-        private Statement stmmt;
-        private static final String driver="com.mysql.jdbc.Driver";
-        private static final String url="jdbc:mysql://localhost:3306/trabajofinal";
-        Date now = new Date(System.currentTimeMillis());
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        
+        
+        
+        
         
         
     /**
@@ -46,6 +43,7 @@ public class eventos extends javax.swing.JFrame {
     }
   public static  Connection getConexion() {
         Connection cn=null;
+        String url="jdbc:mysql://localhost:3306/trabajofinal";
         try{
             Class.forName("com.mysql.jdbc.Driver");
             cn=DriverManager.getConnection(url,"root","");         
@@ -87,6 +85,57 @@ public class eventos extends javax.swing.JFrame {
             System.out.println(e);
         }
 
+    }
+    
+    private void guardar(){
+     PreparedStatement psInsertar;
+     Connection con;
+     Statement stmmt;
+     Date now = new Date(System.currentTimeMillis());
+     SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+     
+        try {
+            // TODO add your handling code here
+
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            psInsertar = con.prepareStatement("INSERT INTO eventos (Nombre,Ubicacion,Tipo,Fecha)"+" values(?,?,?,?)");
+
+            
+          
+            
+            psInsertar.setString(1,nombre.getText());
+            psInsertar.setString(2,ubicacion.getText());
+            psInsertar.setString(3,tipo.getText());
+            psInsertar.setString(4,date.format(now));
+            
+            psInsertar.getResultSet();
+            psInsertar.executeUpdate();
+
+            JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
+
+            nombre.setText(null);
+            ubicacion.setText(null);
+            tipo.setText(null);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
+    }
+    private void actualizar(){
+        
+    }
+    private void modificar(){
+        
+    }
+    private void borrar(){
+        
+    }
+    private void regresar(){
+        admin  a = new admin();
+        a.setVisible(true);
+        dispose();
     }
            
             
@@ -160,7 +209,7 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
         getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
 
-        jButton1.setText("Agregar");
+        jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -241,48 +290,19 @@ public class eventos extends javax.swing.JFrame {
                 idActionPerformed(evt);
             }
         });
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 40, 20));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 40, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         admin  a = new admin();
-        a.setVisible(true);
-        dispose();
+         regresar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-            // TODO add your handling code here
-
-            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
-            con = DriverManager.getConnection(url);
-            stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("INSERT INTO eventos (Nombre,Ubicacion,Tipo,Fecha)"+" values(?,?,?,?)");
-
-            
-          
-            
-            psInsertar.setString(1,nombre.getText());
-            psInsertar.setString(2,ubicacion.getText());
-            psInsertar.setString(3,tipo.getText());
-            psInsertar.setString(4,date.format(now));
-            
-            psInsertar.getResultSet();
-            psInsertar.executeUpdate();
-
-            JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
-
-            nombre.setText(null);
-            ubicacion.setText(null);
-            tipo.setText(null);
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex);
-        }
+        guardar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
