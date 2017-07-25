@@ -64,8 +64,8 @@ public class codigo {
         }
     }
      
-    public static void modificarevento(){
-        
+    public static void modificarevento(String z,String a,String b, String c,String d){
+      
     }
     
     public static void borrarevento(String a){

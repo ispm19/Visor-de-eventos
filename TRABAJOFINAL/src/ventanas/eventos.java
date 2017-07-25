@@ -114,7 +114,6 @@ public class eventos extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
 
@@ -216,9 +215,6 @@ public class eventos extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
 
-        jButton6.setText("Actualizar");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, -1, -1));
-
         jLabel10.setText("ID");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, -1, -1));
 
@@ -275,6 +271,7 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        codigo.modificarevento(id.getText(),nombre2.getText(), ubicacion2.getText(), tipo2.getText(), fecha2.getText());
        
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -342,7 +339,6 @@ public class eventos extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
