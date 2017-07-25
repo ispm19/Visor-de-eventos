@@ -24,11 +24,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class eventos extends javax.swing.JFrame {
         
-        
-        
-        
-        
-        
     /**
      * Creates new form eventos
      */
