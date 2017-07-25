@@ -124,7 +124,16 @@ public class eventos extends javax.swing.JFrame {
         }
     }
     private void actualizar(){
-        
+         try {
+                // TODO add your handling code here:
+                eventos  b = new eventos();
+                
+                dispose();
+                JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
+                b.setVisible(true);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex);
+            }
     }
     private void modificar(){
         
@@ -306,16 +315,7 @@ public class eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-            try {
-                // TODO add your handling code here:
-                eventos  b = new eventos();
-                
-                dispose();
-                JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
-                b.setVisible(true);
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex);
-            }
+           actualizar();
        
     }//GEN-LAST:event_jButton5ActionPerformed
 
