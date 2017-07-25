@@ -7,13 +7,10 @@ package ventanas;
 
 import codigo.codigo;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -244,7 +241,7 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            codigo.guardar(nombre.getText(),tipo.getText(),ubicacion.getText());
+            codigo.guardarevento(nombre.getText(),tipo.getText(),ubicacion.getText());
             nombre.setText(null);
             tipo.setText(null);
             ubicacion.setText(null);
@@ -283,6 +280,11 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        String ida= id.getText();
+        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " +ida);
+        if(respuesta==JOptionPane.YES_OPTION){
+            codigo.borrarevento(ida);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
