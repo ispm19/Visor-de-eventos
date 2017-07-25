@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import codigo.codigo;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -80,69 +81,6 @@ public class eventos extends javax.swing.JFrame {
 
     }
     
-    private void guardar(){
-     PreparedStatement psInsertar;
-     Connection con;
-     Statement stmmt;
-     Date now = new Date(System.currentTimeMillis());
-     SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-     
-        try {
-            // TODO add your handling code here
-
-            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
-            con = DriverManager.getConnection(url);
-            stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("INSERT INTO eventos (Nombre,Ubicacion,Tipo,Fecha)"+" values(?,?,?,?)");
-
-            
-          
-            
-            psInsertar.setString(1,nombre.getText());
-            psInsertar.setString(2,ubicacion.getText());
-            psInsertar.setString(3,tipo.getText());
-            psInsertar.setString(4,date.format(now));
-            
-            psInsertar.getResultSet();
-            psInsertar.executeUpdate();
-
-            JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
-
-            nombre.setText(null);
-            ubicacion.setText(null);
-            tipo.setText(null);
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex);
-        }
-    }
-    private void actualizar(){
-         try {
-                // TODO add your handling code here:
-                eventos  b = new eventos();
-                
-                dispose();
-                JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
-                b.setVisible(true);
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex);
-            }
-    }
-    private void modificar(){
-        
-    }
-    private void borrar(){
-        
-    }
-    private void regresar(){
-        admin  a = new admin();
-        a.setVisible(true);
-        dispose();
-    }
-           
-            
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -299,16 +237,31 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         regresar();
+        admin  a = new admin();
+        a.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        guardar();
+            codigo.guardar(nombre.getText(),tipo.getText(),ubicacion.getText());
+            nombre.setText(null);
+            tipo.setText(null);
+            ubicacion.setText(null);
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-           actualizar();
+            try {
+                // TODO add your handling code here:
+                eventos  b = new eventos();
+                
+                dispose();
+                JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
+                b.setVisible(true);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex);
+            }
        
     }//GEN-LAST:event_jButton5ActionPerformed
 
