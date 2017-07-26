@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-07-2017 a las 02:04:09
+-- Tiempo de generación: 25-07-2017 a las 14:33:56
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eventos` (
+  `ID` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
   `Ubicacion` varchar(30) NOT NULL,
   `Tipo` varchar(30) NOT NULL,
@@ -37,14 +38,10 @@ CREATE TABLE `eventos` (
 -- Volcado de datos para la tabla `eventos`
 --
 
-INSERT INTO `eventos` (`Nombre`, `Ubicacion`, `Tipo`, `Fecha`) VALUES
-('asd', 'asd', 'asd', '2017-07-23'),
-('club cocacola', 'la nuñez', 'social', '2017-07-23'),
-('aaa', 'aa', '', '2017-07-23'),
-('', '', 'a', '2017-07-23'),
-('ada', 'asd', 'asd', '2017-07-23'),
-('asd1', 'asd', 'asdaaaa', '2017-07-23'),
-('asd1111', 'asd', 'asd', '2017-07-23');
+INSERT INTO `eventos` (`ID`, `Nombre`, `Ubicacion`, `Tipo`, `Fecha`) VALUES
+(1, 'Reunion de alumnos', 'Jardin botanico', 'Escolar', '2017-07-25'),
+(2, 'aasd', 'asd', 'asd', '2017-07-25'),
+(3, 'hola', 'nose', 'mundo', '2017-07-25');
 
 --
 -- Índices para tablas volcadas
@@ -54,8 +51,17 @@ INSERT INTO `eventos` (`Nombre`, `Ubicacion`, `Tipo`, `Fecha`) VALUES
 -- Indices de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD PRIMARY KEY (`Nombre`);
+  ADD PRIMARY KEY (`ID`);
 
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
