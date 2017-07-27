@@ -5,7 +5,6 @@
  */
 package ventanas;
 
-import codigo.codigo;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -155,6 +154,11 @@ public class admin extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 30));
 
         jButton3.setText("EVENTOS");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -325,11 +329,24 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ubicacionActionPerformed
+
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-     Date now = new Date(System.currentTimeMillis());
-     SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-     
+        Date now = new Date(System.currentTimeMillis());
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+
         try {
             // TODO add your handling code here
 
@@ -337,89 +354,33 @@ public class admin extends javax.swing.JFrame {
             con = DriverManager.getConnection(url);
             stmmt= con.createStatement();
             psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO)"+" values(?,?,?,?,?)");
-            
-            psInsertar.setString(1,a);
-            psInsertar.setString(2,b);
-            psInsertar.setString(3,c);
-            psInsertar.setString(5,d);
+
             psInsertar.setString(4,date.format(now));
-            
+
             psInsertar.getResultSet();
             psInsertar.executeUpdate();
 
             JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
             table.setModel(modelo);
             modelo.fireTableDataChanged();
-            
-           
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex);
         }
-        
+
         nombre.setText(null);
         tipo.setText(null);
         ubicacion.setText(null);
-                
-
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-      
-            
+
         JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
         admin a = new admin();
         a.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-        codigo.modificarevento(id.getText(),nombre2.getText(), ubicacion2.getText(), tipo2.getText(), fecha2.getText());
-
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-        
-        String ida= id.getText();
-        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " +ida);
-        if(respuesta==JOptionPane.YES_OPTION){
-                try {
-                 // TODO add your handling code here
-
-                 String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
-                 con = DriverManager.getConnection(url);
-                 stmmt= con.createStatement();
-                 psInsertar = con.prepareStatement("DELETE FROM evento WHERE IDEVENTO='"+a+"'");
-
-                 psInsertar.getResultSet();
-                 psInsertar.executeUpdate();
-
-                 JOptionPane.showMessageDialog(null," Los datos borrados exitosamente");    
-
-             } catch (SQLException ex) {
-                 JOptionPane.showMessageDialog(null,ex);
-             }
-        }
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void tipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipo2ActionPerformed
-
-    private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ubicacionActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
@@ -431,6 +392,42 @@ public class admin extends javax.swing.JFrame {
         fecha2.setText(table.getValueAt(rec, 4).toString());
         estado2.setText(table.getValueAt(rec, 5).toString());
     }//GEN-LAST:event_tableMouseClicked
+
+    private void tipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipo2ActionPerformed
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+
+        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " +id.getText());
+        if(respuesta==JOptionPane.YES_OPTION){
+            try {
+                // TODO add your handling code here
+
+                String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+                con = DriverManager.getConnection(url);
+                stmmt= con.createStatement();
+                psInsertar = con.prepareStatement("DELETE FROM evento WHERE IDEVENTO='"+id.getText()+"'");
+
+                psInsertar.getResultSet();
+                psInsertar.executeUpdate();
+
+                JOptionPane.showMessageDialog(null," Los datos borrados exitosamente");
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex);
+            }
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
