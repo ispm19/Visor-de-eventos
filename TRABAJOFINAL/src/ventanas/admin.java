@@ -7,10 +7,13 @@ package ventanas;
 
 import codigo.codigo;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,7 +24,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Garcia
  */
 public class admin extends javax.swing.JFrame {
-
+ PreparedStatement psInsertar;
+     Connection con;
+     Statement stmmt;
+     ResultSet resultado;
+     DefaultTableModel modelo = new DefaultTableModel();   
     /**
      * Creates new form admin
      */
@@ -57,7 +64,7 @@ public class admin extends javax.swing.JFrame {
     }    
     // funcion para rellenar la tabla
     private void mostrar() {        
-        DefaultTableModel modelo = new DefaultTableModel();               
+                    
         ResultSet rs = getTabla("select IDEVENTO,DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO from evento");
         modelo.setColumnIdentifiers(new Object[]{"IDEVENTO","DESCRIPCION","UBICACIÓN","TIPO","FECHA","ESTADO"});
         try {
@@ -320,8 +327,36 @@ public class admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+     Date now = new Date(System.currentTimeMillis());
+     SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+     
+        try {
+            // TODO add your handling code here
+
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO)"+" values(?,?,?,?,?)");
+            
+            psInsertar.setString(1,a);
+            psInsertar.setString(2,b);
+            psInsertar.setString(3,c);
+            psInsertar.setString(5,d);
+            psInsertar.setString(4,date.format(now));
+            
+            psInsertar.getResultSet();
+            psInsertar.executeUpdate();
+
+            JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
+            table.setModel(modelo);
+            modelo.fireTableDataChanged();
+            
+           
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
         
-        codigo.guardarevento(nombre.getText(),ubicacion.getText(),tipo.getText(),estado.getText());
         nombre.setText(null);
         tipo.setText(null);
         ubicacion.setText(null);
@@ -339,18 +374,6 @@ public class admin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        // TODO add your handling code here:
-        int rec = table.getSelectedRow();
-        id.setText(table.getValueAt(rec, 0).toString());
-        nombre2.setText(table.getValueAt(rec, 1).toString());
-        ubicacion2.setText(table.getValueAt(rec, 2).toString());
-        tipo2.setText(table.getValueAt(rec, 3).toString());
-        fecha2.setText(table.getValueAt(rec, 4).toString());
-        estado2.setText(table.getValueAt(rec, 5).toString());
-
-    }//GEN-LAST:event_tableMouseClicked
-
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
@@ -363,10 +386,26 @@ public class admin extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        
         String ida= id.getText();
         int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " +ida);
         if(respuesta==JOptionPane.YES_OPTION){
-            codigo.borrarevento(ida);
+                try {
+                 // TODO add your handling code here
+
+                 String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+                 con = DriverManager.getConnection(url);
+                 stmmt= con.createStatement();
+                 psInsertar = con.prepareStatement("DELETE FROM evento WHERE IDEVENTO='"+a+"'");
+
+                 psInsertar.getResultSet();
+                 psInsertar.executeUpdate();
+
+                 JOptionPane.showMessageDialog(null," Los datos borrados exitosamente");    
+
+             } catch (SQLException ex) {
+                 JOptionPane.showMessageDialog(null,ex);
+             }
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -381,6 +420,17 @@ public class admin extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        int rec = table.getSelectedRow();
+        id.setText(table.getValueAt(rec, 0).toString());
+        nombre2.setText(table.getValueAt(rec, 1).toString());
+        ubicacion2.setText(table.getValueAt(rec, 2).toString());
+        tipo2.setText(table.getValueAt(rec, 3).toString());
+        fecha2.setText(table.getValueAt(rec, 4).toString());
+        estado2.setText(table.getValueAt(rec, 5).toString());
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
