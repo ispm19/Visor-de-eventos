@@ -76,7 +76,7 @@ public class codigo {
             String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
             con = DriverManager.getConnection(url);
             stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("DELETE FROM eventos WHERE ID='"+a+"'");
+            psInsertar = con.prepareStatement("DELETE FROM evento WHERE ID='"+a+"'");
 
             psInsertar.getResultSet();
             psInsertar.executeUpdate();
