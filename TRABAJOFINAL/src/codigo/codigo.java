@@ -45,7 +45,7 @@ public class codigo {
             String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
             con = DriverManager.getConnection(url);
             stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO DE EVENTO,FECHA)"+" values(?,?,?,?)");
+            psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO,FECHA)"+" values(?,?,?,?)");
             
             psInsertar.setString(1,a);
             psInsertar.setString(2,b);

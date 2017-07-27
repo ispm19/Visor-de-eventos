@@ -58,7 +58,7 @@ public class admin extends javax.swing.JFrame {
     // funcion para rellenar la tabla
     private void mostrar() {        
         DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = getTabla("select IDEVENTO,DESCRIPCION,UBICACIÓN,TIPO DE EVENTO,FECHA,ESTADO from evento");
+        ResultSet rs = getTabla("select IDEVENTO,DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO from evento");
         modelo.setColumnIdentifiers(new Object[]{"IDEVENTO","DESCRIPCION","UBICACIÓN","TIPO DE EVENTO","FECHA","ESTADO"});
         try {
             while (rs.next()) {
