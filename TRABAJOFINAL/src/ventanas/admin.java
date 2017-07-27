@@ -131,7 +131,6 @@ public class admin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         estado = new javax.swing.JTextField();
-        combo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -294,14 +293,6 @@ public class admin extends javax.swing.JFrame {
         panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
         panel.add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, -1));
 
-        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "no" }));
-        combo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboActionPerformed(evt);
-            }
-        });
-        panel.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
-
         getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 630, 500));
 
         pack();
@@ -391,10 +382,6 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -431,7 +418,6 @@ public class admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> combo;
     private javax.swing.JTextField estado;
     private javax.swing.JTextField estado2;
     private javax.swing.JTextField fecha2;
