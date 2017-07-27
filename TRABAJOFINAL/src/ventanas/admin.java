@@ -58,16 +58,18 @@ public class admin extends javax.swing.JFrame {
     // funcion para rellenar la tabla
     private void mostrar() {        
         DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = getTabla("select ID,Nombre,Ubicacion,Tipo,Fecha from eventos");
-        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Ubicacion","Tipo","Fecha"});
+        ResultSet rs = getTabla("select IDEVENTO,DESCRIPCION,UBICACIÓN,TIPO DE EVENTO,FECHA,ESTADO from evento");
+        modelo.setColumnIdentifiers(new Object[]{"IDEVENTO","DESCRIPCION","UBICACIÓN","TIPO DE EVENTO","FECHA","ESTADO"});
         try {
             while (rs.next()) {
                 // añade los resultado a al modelo de tabla
-                modelo.addRow(new Object[]{rs.getString("ID"),
-               rs.getString("Nombre"), 
-                rs.getString("Ubicacion"),
-                rs.getString("Tipo"),
-                rs.getString("Fecha")});
+                modelo.addRow(new Object[]{
+               rs.getString("IDEVENTO"), 
+                rs.getString("DESCRIPCION"),
+                rs.getString("UBICACIÓN"),
+                rs.getString("TIPO DE EVENTO"),
+                 rs.getString("FECHA"),
+                 rs.getString("ESTADO")});
                 
             }            
             // asigna el modelo a la tabla
@@ -293,10 +295,11 @@ public class admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        codigo.guardarevento(nombre.getText(),tipo.getText(),ubicacion.getText());
+        codigo.guardarevento(nombre.getText(),ubicacion.getText(),tipo.getText());
         nombre.setText(null);
         tipo.setText(null);
         ubicacion.setText(null);
+        
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
