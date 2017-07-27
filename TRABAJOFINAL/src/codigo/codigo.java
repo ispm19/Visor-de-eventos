@@ -34,7 +34,7 @@ public class codigo {
             System.out.println("Error");
         }
     }
-     public static void guardarevento(String a,String b, String c){
+     public static void guardarevento(String a,String b, String c,String d){
          
      Date now = new Date(System.currentTimeMillis());
      SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,11 +45,12 @@ public class codigo {
             String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
             con = DriverManager.getConnection(url);
             stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO,FECHA)"+" values(?,?,?,?)");
+            psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO)"+" values(?,?,?,?,?)");
             
             psInsertar.setString(1,a);
             psInsertar.setString(2,b);
             psInsertar.setString(3,c);
+            psInsertar.setString(5,d);
             psInsertar.setString(4,date.format(now));
             
             psInsertar.getResultSet();
