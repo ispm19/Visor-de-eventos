@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -57,7 +58,8 @@ public class codigo {
             psInsertar.executeUpdate();
 
             JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
-
+            
+            
            
             
         } catch (SQLException ex) {

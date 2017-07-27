@@ -73,7 +73,7 @@ public class admin extends javax.swing.JFrame {
                 
             }            
             // asigna el modelo a la tabla
-            table.setModel(modelo);            
+            table.setModel(modelo);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -170,6 +170,11 @@ public class admin extends javax.swing.JFrame {
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 120, 30));
 
         jButton11.setText("MODO PORTERO");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
 
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -315,20 +320,20 @@ public class admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+         
         codigo.guardarevento(nombre.getText(),ubicacion.getText(),tipo.getText(),estado.getText());
         nombre.setText(null);
         tipo.setText(null);
         ubicacion.setText(null);
-        
+                
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        admin  b = new admin();
-        dispose();
+      
+            
         JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
-        b.setVisible(true);
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -370,6 +375,10 @@ public class admin extends javax.swing.JFrame {
     private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ubicacionActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
