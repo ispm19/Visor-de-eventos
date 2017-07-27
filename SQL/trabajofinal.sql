@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2017 a las 14:33:56
+-- Tiempo de generación: 27-07-2017 a las 02:09:04
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -23,45 +23,44 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `eventos`
+-- Estructura de tabla para la tabla `evento`
 --
 
-CREATE TABLE `eventos` (
-  `ID` int(11) NOT NULL,
-  `Nombre` varchar(30) NOT NULL,
-  `Ubicacion` varchar(30) NOT NULL,
-  `Tipo` varchar(30) NOT NULL,
-  `Fecha` varchar(30) NOT NULL
+CREATE TABLE `evento` (
+  `IDEVENTO` int(11) NOT NULL,
+  `DESCRIPCION` varchar(30) NOT NULL,
+  `UBICACIÓN` varchar(30) NOT NULL,
+  `TIPO` varchar(30) NOT NULL,
+  `FECHA` date NOT NULL,
+  `ESTADO` bit(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `eventos`
+-- Volcado de datos para la tabla `evento`
 --
 
-INSERT INTO `eventos` (`ID`, `Nombre`, `Ubicacion`, `Tipo`, `Fecha`) VALUES
-(1, 'Reunion de alumnos', 'Jardin botanico', 'Escolar', '2017-07-25'),
-(2, 'aasd', 'asd', 'asd', '2017-07-25'),
-(3, 'hola', 'nose', 'mundo', '2017-07-25');
+INSERT INTO `evento` (`IDEVENTO`, `DESCRIPCION`, `UBICACIÓN`, `TIPO`, `FECHA`, `ESTADO`) VALUES
+(1, 'asd', 'asd', 'asd', '2017-07-26', b'000000011000010111001101100100');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `eventos`
+-- Indices de la tabla `evento`
 --
-ALTER TABLE `eventos`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `evento`
+  ADD PRIMARY KEY (`IDEVENTO`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `eventos`
+-- AUTO_INCREMENT de la tabla `evento`
 --
-ALTER TABLE `eventos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `evento`
+  MODIFY `IDEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
