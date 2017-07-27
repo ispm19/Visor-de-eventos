@@ -30,10 +30,7 @@ public class admin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mostrar();
         id.setEditable(false);
-        
-        nombre.setVisible(false);
-        ubicacion2.setVisible(false);
-        ubicacion.setVisible(false);
+        panel.setVisible(false);
     }
     public static  Connection getConexion() {
         Connection cn=null;
@@ -97,14 +94,16 @@ public class admin extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        panel = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        tipo = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        ubicacion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        nombre = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        tipo = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        ubicacion = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -125,7 +124,6 @@ public class admin extends javax.swing.JFrame {
         id = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -164,27 +162,32 @@ public class admin extends javax.swing.JFrame {
         jButton6.setText("REPORTES");
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 120, 30));
 
-        jLabel1.setText("AGREGAR EVENTO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 360, -1));
+        jButton11.setText("MODO PORTERO");
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
 
-        jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 130, -1));
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setText("Tipo de evento");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
-        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 130, -1));
+        jLabel12.setText("Nombre");
+        panel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        panel.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
-        jLabel4.setText("Ubicacion");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
+        jLabel13.setText("Tipo de evento");
+        panel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        panel.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, -1));
+
+        jLabel14.setText("Ubicacion");
+        panel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         ubicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ubicacionActionPerformed(evt);
             }
         });
-        getContentPane().add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 130, -1));
+        panel.add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 130, -1));
+
+        jLabel1.setText("AGREGAR EVENTO");
+        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        panel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 360, -1));
 
         jButton7.setText("Guardar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +195,7 @@ public class admin extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 80, -1));
+        panel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 80, -1));
 
         jButton8.setText("Actualizar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -200,10 +203,10 @@ public class admin extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
+        panel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
         jLabel6.setText("EVENTOS EN CURSO");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
+        panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -212,38 +215,44 @@ public class admin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 350, 260));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 360, 10));
+        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 350, 260));
+        panel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 360, 10));
 
         jLabel11.setText("EDITAR");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, -1));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 270, 10));
-        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 130, -1));
+        panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
+        panel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 270, 10));
+        panel.add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 130, -1));
 
         jLabel7.setText("Nombre");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
+        panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
 
         jLabel3.setText("Fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, -1, -1));
-        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 130, -1));
+        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, -1, -1));
+        panel.add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 130, -1));
 
         jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, -1, -1));
-        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 130, -1));
+        panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, -1, -1));
+        panel.add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 130, -1));
 
         jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, -1, 20));
-        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 130, 20));
+        panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, 20));
+
+        tipo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipo2ActionPerformed(evt);
+            }
+        });
+        panel.add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 130, 30));
 
         jLabel10.setText("ID");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
+        panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
 
         id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idActionPerformed(evt);
             }
         });
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 60, 20));
+        panel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 60, 30));
 
         jButton9.setText("Modificar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +260,7 @@ public class admin extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 80, -1));
+        panel.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 80, -1));
 
         jButton10.setText("Borrar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -259,10 +268,9 @@ public class admin extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 380, 80, -1));
+        panel.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 80, -1));
 
-        jButton11.setText("MODO PORTERO");
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 630, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -275,23 +283,13 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            // TODO add your handling code here:
-            eventos a = new eventos();
-            a.setVisible(true);
-            dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(admin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
+        panel.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ubicacionActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -340,6 +338,14 @@ public class admin extends javax.swing.JFrame {
             codigo.borrarevento(ida);
         }
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void tipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipo2ActionPerformed
+
+    private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ubicacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,10 +399,10 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -408,6 +414,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField nombre2;
+    private javax.swing.JPanel panel;
     private javax.swing.JTable table;
     private javax.swing.JTextField tipo;
     private javax.swing.JTextField tipo2;
