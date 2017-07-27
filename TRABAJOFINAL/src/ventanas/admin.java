@@ -12,11 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import objetos.evento;
 
 /**
  *
@@ -45,7 +43,7 @@ public class admin extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             cn=DriverManager.getConnection(url,"root","");         
         }
-        catch(Exception e){
+        catch(ClassNotFoundException | SQLException e){
          System.out.println(String.valueOf(e));}
         return cn;
     }
@@ -58,7 +56,7 @@ public class admin extends javax.swing.JFrame {
             st=cn.createStatement();
             datos=st.executeQuery(Consulta);            
         }
-        catch(Exception e){ System.out.print(e.toString());}
+        catch(SQLException e){ System.out.print(e.toString());}
         return datos;
     }    
     // funcion para rellenar la tabla
@@ -80,7 +78,7 @@ public class admin extends javax.swing.JFrame {
             }            
             // asigna el modelo a la tabla
             table.setModel(modelo);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
 
@@ -113,7 +111,6 @@ public class admin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -136,7 +133,10 @@ public class admin extends javax.swing.JFrame {
         estado2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        estado = new javax.swing.JTextField();
+        estado = new javax.swing.JComboBox<>();
+        fecha = new com.toedter.calendar.JDateChooser();
+        jButton8 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,7 +151,7 @@ public class admin extends javax.swing.JFrame {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 10));
 
         jButton2.setText("USUARIOS");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 120, 30));
 
         jButton3.setText("EVENTOS");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -164,7 +164,7 @@ public class admin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 120, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 120, 30));
 
         jButton4.setText("INVITADOS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -172,13 +172,13 @@ public class admin extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 120, 30));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 120, 30));
 
         jButton5.setText("INVITACIONES");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, 30));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 120, 30));
 
         jButton6.setText("REPORTES");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 120, 30));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, 30));
 
         jButton11.setText("MODO PORTERO");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +186,7 @@ public class admin extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 30));
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 120, 30));
 
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -218,15 +218,7 @@ public class admin extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        panel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 80, -1));
-
-        jButton8.setText("Actualizar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        panel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
+        panel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 80, -1));
 
         jLabel6.setText("EVENTOS EN CURSO");
         panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
@@ -298,13 +290,32 @@ public class admin extends javax.swing.JFrame {
         panel.add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 130, -1));
 
         jLabel4.setText("Fecha");
-        panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
+        panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
         jLabel5.setText("Estado");
-        panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
-        panel.add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, -1));
+        panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+
+        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        panel.add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
+        panel.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 140, -1));
 
         getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 630, 500));
+
+        jButton8.setText("Actualizar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+
+        jButton12.setText("LIMPIAR");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -344,9 +355,18 @@ public class admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        Date now = new Date(System.currentTimeMillis());
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-
+        byte c=2;
+        
+        
+        if(estado.getSelectedItem().equals("Activo")){
+            c=1;
+           
+        }else if(estado.getSelectedItem().equals("Inactivo")){
+            c=0;
+           
+        }
+        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(), (Date) fecha.getDate(),c);
+        
         try {
             // TODO add your handling code here
 
@@ -355,7 +375,14 @@ public class admin extends javax.swing.JFrame {
             stmmt= con.createStatement();
             psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO)"+" values(?,?,?,?,?)");
 
-            psInsertar.setString(4,date.format(now));
+            
+            psInsertar.setString(1,evento.getDescripcion());
+            psInsertar.setString(2,evento.getUbicacion());
+            psInsertar.setString(3,evento.getTipo());
+            psInsertar.setDate(4,evento.getFecha());
+            psInsertar.setByte(5,evento.getEstado());
+            
+            
 
             psInsertar.getResultSet();
             psInsertar.executeUpdate();
@@ -429,6 +456,11 @@ public class admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        panel.setVisible(false);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -445,33 +477,29 @@ public class admin extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+     //</editor-fold>
+     
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new admin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new admin().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField estado;
+    private javax.swing.JComboBox<String> estado;
     private javax.swing.JTextField estado2;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JTextField fecha2;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
