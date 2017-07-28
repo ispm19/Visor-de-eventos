@@ -5,17 +5,81 @@
  */
 package ventanas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Garcia
  */
-public class PANEL extends javax.swing.JFrame {
-
+public class eventos extends javax.swing.JFrame {
+     PreparedStatement psInsertar;
+     Connection con;
+     Statement stmmt;
+     ResultSet resultado;
+     DefaultTableModel modelo = new DefaultTableModel(); 
     /**
-     * Creates new form PANEL
+     * Creates new form eventos
      */
-    public PANEL() {
+    public eventos() {
         initComponents();
+    this.setLocationRelativeTo(null);
+        mostrar();
+        id.setEditable(false);
+        
+    }
+    public static  Connection getConexion() {
+        Connection cn=null;
+        String url="jdbc:mysql://localhost:3306/trabajofinal";
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            cn=DriverManager.getConnection(url,"root","");         
+        }
+        catch(ClassNotFoundException | SQLException e){
+         System.out.println(String.valueOf(e));}
+        return cn;
+    }
+    
+    public static ResultSet getTabla(String Consulta){
+        Connection cn=getConexion();
+        Statement st;
+        ResultSet datos=null;
+        try{
+            st=cn.createStatement();
+            datos=st.executeQuery(Consulta);            
+        }
+        catch(SQLException e){ System.out.print(e.toString());}
+        return datos;
+    }    
+    // funcion para rellenar la tabla
+    private void mostrar() {        
+                    
+        ResultSet rs = getTabla("select IDEVENTO,DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO from evento");
+        modelo.setColumnIdentifiers(new Object[]{"IDEVENTO","DESCRIPCION","UBICACIÓN","TIPO","FECHA","ESTADO"});
+        try {
+            while (rs.next()) {
+                // añade los resultado a al modelo de tabla
+                modelo.addRow(new Object[]{
+               rs.getString("IDEVENTO"), 
+                rs.getString("DESCRIPCION"),
+                rs.getString("UBICACIÓN"),
+                rs.getString("TIPO"),
+                 rs.getString("FECHA"),
+                 rs.getString("ESTADO")});
+                
+            }            
+            // asigna el modelo a la tabla
+            table.setModel(modelo);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
     }
 
     /**
@@ -27,7 +91,7 @@ public class PANEL extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -50,9 +114,7 @@ public class PANEL extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         ubicacion2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        tipo2 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -61,33 +123,36 @@ public class PANEL extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         estado = new javax.swing.JComboBox<>();
         fecha = new com.toedter.calendar.JDateChooser();
+        id = new javax.swing.JTextField();
+        tipo2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jLabel12.setText("Descripcion");
-        panel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-        panel.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
         jLabel13.setText("Tipo de evento");
-        panel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-        panel.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, -1));
 
         jLabel14.setText("Ubicacion");
-        panel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
         ubicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ubicacionActionPerformed(evt);
             }
         });
-        panel.add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 130, -1));
+        getContentPane().add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 130, -1));
 
         jLabel1.setText("AGREGAR EVENTO");
-        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
-        panel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 640, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 740, 10));
 
         jButton7.setText("Guardar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -95,10 +160,10 @@ public class PANEL extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        panel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 80, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 80, -1));
 
         jLabel6.setText("EVENTOS EN CURSO");
-        panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,44 +172,30 @@ public class PANEL extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table);
 
-        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 350, 260));
-        panel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 360, 10));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 450, 300));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 360, 10));
 
         jLabel11.setText("EDITAR");
-        panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
-        panel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 270, 10));
-        panel.add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 130, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 390, 10));
+        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 130, -1));
 
         jLabel7.setText("Nombre");
-        panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
 
         jLabel3.setText("Fecha");
-        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, -1, -1));
-        panel.add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 130, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
+        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 130, -1));
 
         jLabel8.setText("Ubicacion");
-        panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
-        panel.add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 130, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 130, -1));
 
         jLabel9.setText("Tipo de evento");
-        panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, -1, 20));
-
-        tipo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipo2ActionPerformed(evt);
-            }
-        });
-        panel.add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 130, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, 20));
 
         jLabel10.setText("ID");
-        panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
-
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
-        panel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 60, 30));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
 
         jButton9.setText("Modificar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +203,7 @@ public class PANEL extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        panel.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 80, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 80, -1));
 
         jButton10.setText("Borrar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -160,23 +211,31 @@ public class PANEL extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        panel.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 80, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 80, -1));
 
         jLabel2.setText("Estado");
-        panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, -1, -1));
-        panel.add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 130, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, -1, -1));
+        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 130, -1));
 
         jLabel4.setText("Fecha");
-        panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         jLabel5.setText("Estado");
-        panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
 
         estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        panel.add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
-        panel.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 140, -1));
+        getContentPane().add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 130, -1));
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 140, -1));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 130, -1));
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 130, -1));
 
-        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 630, 500));
+        jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 90, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,14 +298,6 @@ public class PANEL extends javax.swing.JFrame {
         estado2.setText(table.getValueAt(rec, 5).toString());
     }//GEN-LAST:event_tableMouseClicked
 
-    private void tipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipo2ActionPerformed
-
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -275,6 +326,14 @@ public class PANEL extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        admin a = new admin();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,21 +351,19 @@ public class PANEL extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PANEL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eventos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PANEL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eventos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PANEL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eventos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PANEL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eventos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PANEL().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new eventos().setVisible(true);
         });
     }
 
@@ -316,7 +373,9 @@ public class PANEL extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JTextField fecha2;
     private javax.swing.JTextField id;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -339,7 +398,6 @@ public class PANEL extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField nombre2;
-    private javax.swing.JPanel panel;
     private javax.swing.JTable table;
     private javax.swing.JTextField tipo;
     private javax.swing.JTextField tipo2;
