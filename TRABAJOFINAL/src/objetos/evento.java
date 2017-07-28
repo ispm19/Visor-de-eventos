@@ -16,7 +16,7 @@ public class evento {
     public String descripcion;
     public String ubicacion;
     public String tipo;
-    public String fecha;
+    public Date fecha;
     public byte estado;
 
     public byte getEstado() {
@@ -35,16 +35,20 @@ public class evento {
         return tipo;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public evento(String descripcion, String ubicacion, String tipo, String fecha, byte estado) {
+    public evento(String descripcion, String ubicacion, String tipo, Date fecha, byte estado) {
         this.descripcion = descripcion;
         this.ubicacion = ubicacion;
         this.tipo = tipo;
         this.fecha = fecha;
         this.estado = estado;
+    }
+
+    public long getTime() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -34,8 +34,7 @@ public class eventos extends javax.swing.JFrame {
     this.setLocationRelativeTo(null);
         mostrar();
         id.setEditable(false);
-        table.setEditingRow(false);
-        
+                
     }
     public static  Connection getConexion() {
         Connection cn=null;
@@ -254,7 +253,10 @@ public class eventos extends javax.swing.JFrame {
         }else if(estado.getSelectedItem().equals("Inactivo")){
             a=0;
         }
-        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(),fecha.getDate(),a);
+        
+        
+
+        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(), (Date) fecha.getDate(),a);
 
         try {
             // TODO add your handling code here
@@ -267,7 +269,7 @@ public class eventos extends javax.swing.JFrame {
             psInsertar.setString(1,evento.getDescripcion());
             psInsertar.setString(2,evento.getUbicacion());
             psInsertar.setString(3,evento.getTipo());
-            psInsertar.setDate(4,evento.getFecha());
+            psInsertar.setDate(4,new java.sql.Date(evento.getTime()));
             psInsertar.setByte(5,evento.getEstado());
 
             psInsertar.getResultSet();
