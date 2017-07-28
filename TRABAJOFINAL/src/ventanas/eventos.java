@@ -254,9 +254,13 @@ public class eventos extends javax.swing.JFrame {
             a=0;
         }
         
+        java.util.Date date;
+        java.sql.Date sqldate;
+        date = fecha.getDate();
         
+        sqldate =new java.sql.Date(date.getTime());
 
-        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(), (Date) fecha.getDate(),a);
+        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(),sqldate,a);
 
         try {
             // TODO add your handling code here
@@ -269,7 +273,7 @@ public class eventos extends javax.swing.JFrame {
             psInsertar.setString(1,evento.getDescripcion());
             psInsertar.setString(2,evento.getUbicacion());
             psInsertar.setString(3,evento.getTipo());
-            psInsertar.setDate(4,new java.sql.Date(evento.getTime()));
+            psInsertar.setDate(4,evento.getFecha());
             psInsertar.setByte(5,evento.getEstado());
 
             psInsertar.getResultSet();
