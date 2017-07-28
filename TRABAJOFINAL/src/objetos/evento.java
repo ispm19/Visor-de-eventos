@@ -16,7 +16,7 @@ public class evento {
     public String descripcion;
     public String ubicacion;
     public String tipo;
-    public Date fecha;
+    public String fecha;
     public byte estado;
 
     public byte getEstado() {
@@ -35,35 +35,15 @@ public class evento {
         return tipo;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public evento(String descripcion, String ubicacion, String tipo, Date fecha, byte estado) {
+    public evento(String descripcion, String ubicacion, String tipo, String fecha, byte estado) {
         this.descripcion = descripcion;
         this.ubicacion = ubicacion;
         this.tipo = tipo;
         this.fecha = fecha;
-        this.estado = estado;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public void setEstado(byte estado) {
         this.estado = estado;
     }
 

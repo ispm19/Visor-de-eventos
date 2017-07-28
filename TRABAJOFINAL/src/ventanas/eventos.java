@@ -6,6 +6,7 @@
 package ventanas;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import objetos.evento;
 
 /**
  *
@@ -32,6 +34,7 @@ public class eventos extends javax.swing.JFrame {
     this.setLocationRelativeTo(null);
         mostrar();
         id.setEditable(false);
+        table.setEditingRow(false);
         
     }
     public static  Connection getConexion() {
@@ -245,17 +248,13 @@ public class eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_ubicacionActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        byte c=2;
-
+        byte a =0;
         if(estado.getSelectedItem().equals("Activo")){
-            c=1;
-
+            a=1;
         }else if(estado.getSelectedItem().equals("Inactivo")){
-            c=0;
-
+            a=0;
         }
-        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(), (Date) fecha.getDate(),c);
+        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(),fecha.getDate(),a);
 
         try {
             // TODO add your handling code here
