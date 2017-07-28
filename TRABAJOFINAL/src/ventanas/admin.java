@@ -135,8 +135,9 @@ public class admin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Eventos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 80, 20));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 740, 10));
 
         jButton7.setText("Buscar evento");
@@ -194,6 +195,7 @@ public class admin extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, -1, -1));
         getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 130, -1));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Informacion");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 130, -1));
@@ -223,7 +225,9 @@ public class admin extends javax.swing.JFrame {
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
+        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu2.setText("Menu");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenuItem1.setText("Agregar evento");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +239,8 @@ public class admin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu5.setText("Salir a inicio");
+        jMenu5.setText("Cerrar Seccion ");
+        jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu5MouseClicked(evt);
