@@ -7,11 +7,15 @@ package ventanas;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,39 +26,61 @@ public class Registro extends javax.swing.JFrame {
         private Connection conectar;
 
         public void enviar_datos(){
+            PreparedStatement setencia;
+     Connection con;
+     Statement stmmt;
 		
+      byte a =0;
+        if(estado.getSelectedItem().equals("Activo")){
+            a=1;
+        }else if(estado.getSelectedItem().equals("Inactivo")){
+            a=0;
+        }
+        
        try {
-			final String consulta="INSERT INTO USUARIOS (NOMBREUSUARIO, CONTRASEÑA,NOMBRECOMPLETO,TIPOUSUARIO ) VALUES(?,?,?,?)";
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            
+			final String consulta="INSERT INTO usuarios (NombreUsuario, Password,NombreCompleto,TipoUsuario,Estado ) VALUES(?,?,?,?,?)";
 			
-			java.sql.PreparedStatement setencia= conectar.prepareStatement(consulta);
+                        setencia = con.prepareStatement(consulta);			
+			setencia.setString(1, nombre_u.getText());
+			setencia.setString(2, pass.getText());
+			setencia.setString(3,nombreC.getText());
+			setencia.setString(4, (String) tipo.getSelectedItem());
+                        setencia.setByte(5,a);
 			
-			setencia.setString(2, nombre_u.getText());
-			setencia.setString(3, pass.getText());
-			setencia.setString(4,nombreC.getText());
-			setencia.setString(5, (String) tipo.getSelectedItem());
-			
-			setencia.executeUpdate();
 			nombre_u.setText("");
 			pass.setText("");
 			nombreC.setText("");
 			tipo.setSelectedItem("");
+			
+                        setencia.getResultSet();
+                        setencia.executeUpdate();
+            
+                        JOptionPane.showMessageDialog(null, "El usuario se ha registrado con excito");
+                        
 		} catch (SQLException e) {
-			e.getStackTrace();
-			JOptionPane.showMessageDialog(null, "Error en el envio de los datos  a la BD");
+			JOptionPane.showMessageDialog(null,e);
 		}
         }
    
     public Registro() {
         initComponents();
-        try {
-			
-			
-			conectar=DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajofinal","root","");
-			
-		} catch (SQLException e) {
-			e.getStackTrace();
-			JOptionPane.showMessageDialog(null, "Error al conectar la BD");
-		}
+        this.setLocationRelativeTo(null);
+    }
+    
+    public static  Connection getConexion() {
+        Connection cn=null;
+        String url="jdbc:mysql://localhost:3306/trabajofinal";
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            cn=DriverManager.getConnection(url,"root","");         
+        }
+        catch(ClassNotFoundException | SQLException e){
+         System.out.println(String.valueOf(e));}
+        return cn;
     }
 
     /**
@@ -69,7 +95,6 @@ public class Registro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        nombre_u = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         nombreC = new javax.swing.JTextField();
@@ -77,6 +102,8 @@ public class Registro extends javax.swing.JFrame {
         tipo = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        nombre_u = new javax.swing.JTextField();
+        estado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(204, 204, 255));
@@ -93,13 +120,6 @@ public class Registro extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Contraseña");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 90, -1));
-
-        nombre_u.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre_uActionPerformed(evt);
-            }
-        });
-        getContentPane().add(nombre_u, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 140, 20));
         getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -122,7 +142,7 @@ public class Registro extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 100, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 100, 30));
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -133,18 +153,18 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
+        getContentPane().add(nombre_u, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 140, -1));
+
+        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        getContentPane().add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         enviar_datos();
-        JOptionPane.showMessageDialog(null, "El usuario se ha registrado con excito");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void nombre_uActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_uActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombre_uActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         login r = new login();
@@ -189,6 +209,7 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> estado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
