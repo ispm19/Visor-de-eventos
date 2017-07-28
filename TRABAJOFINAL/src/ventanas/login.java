@@ -78,6 +78,11 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jButton2.setText("Create Account");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         pack();
@@ -114,6 +119,12 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
          JOptionPane.showMessageDialog(null,"port,port y admin,admin");
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      Registro r = new Registro();
+      r.setVisible(true);
+                dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

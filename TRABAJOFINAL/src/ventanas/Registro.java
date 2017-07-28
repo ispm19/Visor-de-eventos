@@ -5,17 +5,56 @@
  */
 package ventanas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author segundo
  */
 public class Registro extends javax.swing.JFrame {
+    
+        private Connection conectar;
 
-    /**
-     * Creates new form Registro
-     */
+        public void enviar_datos(){
+		
+       try {
+			final String consulta="INSERT INTO USUARIOS (NOMBREUSUARIO, CONTRASEÑA,NOMBRECOMPLETO,TIPOUSUARIO ) VALUES(?,?,?,?)";
+			
+			java.sql.PreparedStatement setencia= conectar.prepareStatement(consulta);
+			
+			setencia.setString(2, nombre_u.getText());
+			setencia.setString(3, pass.getText());
+			setencia.setString(4,nombreC.getText());
+			setencia.setString(5, (String) tipo.getSelectedItem());
+			
+			setencia.executeUpdate();
+			nombre_u.setText("");
+			pass.setText("");
+			nombreC.setText("");
+			tipo.setSelectedItem("");
+		} catch (SQLException e) {
+			e.getStackTrace();
+			JOptionPane.showMessageDialog(null, "Error en el envio de los datos  a la BD");
+		}
+        }
+   
     public Registro() {
         initComponents();
+        try {
+			
+			
+			conectar=DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajofinal","root","");
+			
+		} catch (SQLException e) {
+			e.getStackTrace();
+			JOptionPane.showMessageDialog(null, "Error al conectar la BD");
+		}
     }
 
     /**
@@ -30,12 +69,13 @@ public class Registro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        nombre_u = new javax.swing.JTextField();
+        pass = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        nombreC = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tipo = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,31 +85,47 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 28, 140, 40));
 
         jLabel2.setText("Nombre Usuario");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 90, 20));
 
         jLabel3.setText("Contraseña");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 60, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 70, -1));
 
-        jTextField3.setText("jTextField3");
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 130, 20));
-
-        jPasswordField2.setText("jPasswordField2");
-        getContentPane().add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 130, -1));
+        nombre_u.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre_uActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nombre_u, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 130, 20));
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 130, -1));
 
         jLabel4.setText("Nombre Completo");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 90, -1));
-
-        jTextField4.setText("jTextField4");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 130, -1));
+        getContentPane().add(nombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 130, -1));
 
         jLabel5.setText("Tipo de Usuario");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 224, 80, 20));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 110, 20));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Administrador" }));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 110, 20));
+
+        jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        enviar_datos();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nombre_uActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_uActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre_uActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,19 +158,21 @@ public class Registro extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Registro().setVisible(true);
+                JOptionPane.showMessageDialog(null, "El usuario se ha registrado con excito");
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField nombreC;
+    private javax.swing.JTextField nombre_u;
+    private javax.swing.JPasswordField pass;
+    private javax.swing.JComboBox<String> tipo;
     // End of variables declaration//GEN-END:variables
 }
