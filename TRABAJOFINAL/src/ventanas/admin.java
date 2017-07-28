@@ -34,7 +34,7 @@ public class admin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mostrar();
         id.setEditable(false);
-        panel.setVisible(false);
+        
     }
     public static  Connection getConexion() {
         Connection cn=null;
@@ -93,321 +93,165 @@ public class admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        panel = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        nombre = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        tipo = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        ubicacion = new javax.swing.JTextField();
+        jMenu1 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jButton7 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
         nombre2 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         fecha2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         ubicacion2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        tipo2 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         estado2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        tipo2 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        estado = new javax.swing.JComboBox<>();
-        fecha = new com.toedter.calendar.JDateChooser();
-        jButton8 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Cerrar seccion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 10));
+        jLabel1.setText("Eventos");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 740, 10));
 
-        jButton2.setText("USUARIOS");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 120, 30));
-
-        jButton3.setText("EVENTOS");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 120, 30));
-
-        jButton4.setText("INVITADOS");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 120, 30));
-
-        jButton5.setText("INVITACIONES");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 120, 30));
-
-        jButton6.setText("REPORTES");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, 30));
-
-        jButton11.setText("MODO PORTERO");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 120, 30));
-
-        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel12.setText("Descripcion");
-        panel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-        panel.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
-
-        jLabel13.setText("Tipo de evento");
-        panel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-        panel.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, -1));
-
-        jLabel14.setText("Ubicacion");
-        panel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-
-        ubicacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ubicacionActionPerformed(evt);
-            }
-        });
-        panel.add(ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 130, -1));
-
-        jLabel1.setText("AGREGAR EVENTO");
-        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
-        panel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 640, -1));
-
-        jButton7.setText("Guardar");
+        jButton7.setText("Buscar evento");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        panel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 80, -1));
-
-        jLabel6.setText("EVENTOS EN CURSO");
-        panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table);
+        jScrollPane2.setViewportView(table);
 
-        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 350, 260));
-        panel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 360, 10));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 290, 240));
 
-        jLabel11.setText("EDITAR");
-        panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
-        panel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 270, 10));
-        panel.add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 130, -1));
-
-        jLabel7.setText("Nombre");
-        panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
-
-        jLabel3.setText("Fecha");
-        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, -1, -1));
-        panel.add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 130, -1));
-
-        jLabel8.setText("Ubicacion");
-        panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
-        panel.add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 130, -1));
-
-        jLabel9.setText("Tipo de evento");
-        panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, -1, 20));
-
-        tipo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipo2ActionPerformed(evt);
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-        panel.add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 130, 30));
+        ));
+        jScrollPane3.setViewportView(jTable2);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 290, 230));
+
+        jLabel2.setText("Invitados");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 740, 10));
 
         jLabel10.setText("ID");
-        panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, -1, -1));
+        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 130, -1));
 
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
-        panel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 60, 30));
+        jLabel3.setText("Fecha");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
+        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 130, -1));
 
-        jButton9.setText("Modificar");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        panel.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 80, -1));
+        jLabel8.setText("Ubicacion");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
+        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 130, -1));
 
-        jButton10.setText("Borrar");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        panel.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 80, -1));
+        jLabel9.setText("Tipo de evento");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, 20));
 
-        jLabel2.setText("Estado");
-        panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, -1, -1));
-        panel.add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 130, -1));
+        jLabel6.setText("Estado");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, -1, -1));
+        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 130, -1));
+
+        jLabel11.setText("Informacion");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 130, -1));
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 130, -1));
+
+        jLabel13.setText("Informacion");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 110, -1));
+
+        jLabel5.setText("Nombre del invitado");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 130, -1));
+
+        jLabel15.setText("Descripcion");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
+
+        jLabel16.setText("Descripcion");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 100, -1));
+
+        jLabel17.setText("Tipo de evento");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, -1));
 
         jLabel4.setText("Fecha");
-        panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        jLabel5.setText("Estado");
-        panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+        jMenu2.setText("Menu");
 
-        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        panel.add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
-        panel.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 140, -1));
-
-        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 630, 500));
-
-        jButton8.setText("Actualizar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Agregar evento");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+        jMenu2.add(jMenuItem1);
 
-        jButton12.setText("LIMPIAR");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+        jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Salir a inicio");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 120, 30));
+        jMenuBar1.add(jMenu5);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int respuesta = JOptionPane.showConfirmDialog(null, " Esta seguro que quiere salir?");
-        if(respuesta==JOptionPane.YES_OPTION){
-           
-        
-        login a = new login();
-        a.setVisible(true);
-        dispose();}
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        panel.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void ubicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubicacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ubicacionActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        byte c=2;
-        
-        
-        if(estado.getSelectedItem().equals("Activo")){
-            c=1;
-           
-        }else if(estado.getSelectedItem().equals("Inactivo")){
-            c=0;
-           
-        }
-        evento evento = new evento(nombre.getText(),ubicacion.getText(),tipo.getText(), (Date) fecha.getDate(),c);
-        
-        try {
-            // TODO add your handling code here
 
-            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
-            con = DriverManager.getConnection(url);
-            stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("INSERT INTO evento (DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO)"+" values(?,?,?,?,?)");
-
-            
-            psInsertar.setString(1,evento.getDescripcion());
-            psInsertar.setString(2,evento.getUbicacion());
-            psInsertar.setString(3,evento.getTipo());
-            psInsertar.setDate(4,evento.getFecha());
-            psInsertar.setByte(5,evento.getEstado());
-            
-            
-
-            psInsertar.getResultSet();
-            psInsertar.executeUpdate();
-
-            JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
-            table.setModel(modelo);
-            modelo.fireTableDataChanged();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex);
-        }
-
-        nombre.setText(null);
-        tipo.setText(null);
-        ubicacion.setText(null);
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-
-        JOptionPane.showMessageDialog(null,"Lista actualizada exitosamente");
-        admin a = new admin();
-        a.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
@@ -420,46 +264,24 @@ public class admin extends javax.swing.JFrame {
         estado2.setText(table.getValueAt(rec, 5).toString());
     }//GEN-LAST:event_tableMouseClicked
 
-    private void tipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo2ActionPerformed
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipo2ActionPerformed
-
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-
-        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " +id.getText());
+        int respuesta = JOptionPane.showConfirmDialog(null, " Esta seguro que quiere salir?");
         if(respuesta==JOptionPane.YES_OPTION){
-            try {
-                // TODO add your handling code here
-
-                String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
-                con = DriverManager.getConnection(url);
-                stmmt= con.createStatement();
-                psInsertar = con.prepareStatement("DELETE FROM evento WHERE IDEVENTO='"+id.getText()+"'");
-
-                psInsertar.getResultSet();
-                psInsertar.executeUpdate();
-
-                JOptionPane.showMessageDialog(null," Los datos borrados exitosamente");
-
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex);
-            }
+            login a = new login();
+            a.setVisible(true);
+            dispose();
         }
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_jMenu5MouseClicked
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        panel.setVisible(false);
-    }//GEN-LAST:event_jButton12ActionPerformed
+        
+            eventos a = new eventos();
+            a.setVisible(true);
+            dispose();
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -491,49 +313,41 @@ public class admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> estado;
     private javax.swing.JTextField estado2;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JTextField fecha2;
     private javax.swing.JTextField id;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField nombre;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField nombre2;
-    private javax.swing.JPanel panel;
     private javax.swing.JTable table;
-    private javax.swing.JTextField tipo;
     private javax.swing.JTextField tipo2;
-    private javax.swing.JTextField ubicacion;
     private javax.swing.JTextField ubicacion2;
     // End of variables declaration//GEN-END:variables
 }
