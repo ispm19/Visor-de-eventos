@@ -111,7 +111,7 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Registrarte ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 28, 140, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 28, 140, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Nombre Usuario");
@@ -131,10 +131,11 @@ public class Registro extends javax.swing.JFrame {
         jLabel5.setText("Tipo de Usuario");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 224, 110, 20));
 
+        tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Administrador" }));
-        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 130, 20));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 140, 30));
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 255));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Crear");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
