@@ -202,20 +202,20 @@ public class eventos extends javax.swing.JFrame {
         jLabel11.setText("EDITAR");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, -1, -1));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 740, 10));
-        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 130, -1));
+        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 130, -1));
 
         jLabel7.setText("Descripcion");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
 
         jLabel3.setText("Fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, -1, -1));
 
         jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, -1, -1));
-        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 130, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, -1));
+        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, 130, -1));
 
         jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 610, -1, 20));
 
         jLabel10.setText("ID");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
@@ -226,7 +226,7 @@ public class eventos extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, 80, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, 80, -1));
 
         jButton10.setText("Borrar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -234,10 +234,10 @@ public class eventos extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 650, 80, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 640, 80, -1));
 
         jLabel2.setText("Estado");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, -1, -1));
 
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
@@ -246,10 +246,10 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
 
         estado2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, 130, -1));
+        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, 130, -1));
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 140, -1));
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 130, -1));
-        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, 130, -1));
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 630, 130, -1));
 
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +258,7 @@ public class eventos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 90, 20));
-        getContentPane().add(fech, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 130, -1));
+        getContentPane().add(fech, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 130, -1));
 
         estado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         getContentPane().add(estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 130, -1));
@@ -359,11 +359,12 @@ public class eventos extends javax.swing.JFrame {
         tipo3.setText(table.getValueAt(rec, 3).toString());
         fecha3.setText(table.getValueAt(rec, 4).toString());
         
-        
-        estado3.setText(table.getValueAt(rec, 5).toString());
-        if(estado3.getText().equals(1)){
+        if(table.getValueAt(rec, 5).toString().equals("1")){
             estado3.setText("Activo");
+        }else if(table.getValueAt(rec, 5).toString().equals("0")){
+            estado3.setText("Inactivo");
         }
+        
         
     }//GEN-LAST:event_tableMouseClicked
 
