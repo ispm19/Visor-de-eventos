@@ -35,6 +35,7 @@ public class eventos extends javax.swing.JFrame {
     this.setLocationRelativeTo(null);
         mostrar();
         id.setEditable(false);
+        estado3.setVisible(false);
                 
     }
     public static  Connection getConexion() {
