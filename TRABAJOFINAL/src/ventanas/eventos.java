@@ -290,6 +290,25 @@ public class eventos extends javax.swing.JFrame {
         nombre.setText(null);
         tipo.setText(null);
         ubicacion.setText(null);
+        
+        try {
+            // TODO add your handling code here
+
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            psInsertar = con.prepareStatement("SELECT * FROM evento");
+
+            
+            psInsertar.getResultSet();
+            psInsertar.executeUpdate();
+
+            table.setModel(modelo);
+            modelo.fireTableDataChanged();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
