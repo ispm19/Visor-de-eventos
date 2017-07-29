@@ -162,7 +162,7 @@ public class eventos extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 80, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 130, -1));
 
         jLabel6.setText("EVENTOS EN CURSO");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
@@ -300,11 +300,21 @@ public class eventos extends javax.swing.JFrame {
         ubicacion2.setText(table.getValueAt(rec, 2).toString());
         tipo2.setText(table.getValueAt(rec, 3).toString());
         fecha2.setText(table.getValueAt(rec, 4).toString());
-        estado2.setText(table.getValueAt(rec, 5).toString());
+        
+        String a=table.getValueAt(rec, 5).toString();
+        String b="";
+        if(a.equals("1")){
+             b="Activo";
+        }else if(a.equals("0")){
+             b="Inactivo";
+        }
+        
+        estado2.setText(b);
     }//GEN-LAST:event_tableMouseClicked
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+   
+        
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed

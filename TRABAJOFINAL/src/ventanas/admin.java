@@ -125,6 +125,7 @@ public class admin extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -196,8 +197,8 @@ public class admin extends javax.swing.JFrame {
         getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 130, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setText("Informacion");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
+        jLabel11.setText("Buscar");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 130, -1));
         getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 130, -1));
 
@@ -224,6 +225,10 @@ public class admin extends javax.swing.JFrame {
 
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("Informacion");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
 
         jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu2.setText("Menu");
@@ -266,7 +271,15 @@ public class admin extends javax.swing.JFrame {
         ubicacion2.setText(table.getValueAt(rec, 2).toString());
         tipo2.setText(table.getValueAt(rec, 3).toString());
         fecha2.setText(table.getValueAt(rec, 4).toString());
-        estado2.setText(table.getValueAt(rec, 5).toString());
+        String a=table.getValueAt(rec, 5).toString();
+        String b="";
+        if(a.equals("1")){
+             b="Activo";
+        }else if(a.equals("0")){
+             b="Inactivo";
+        }
+        
+        estado2.setText(b);
     }//GEN-LAST:event_tableMouseClicked
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
@@ -327,6 +340,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
