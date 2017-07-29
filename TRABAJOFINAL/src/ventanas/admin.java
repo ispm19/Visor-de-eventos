@@ -5,84 +5,28 @@
  */
 package ventanas;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import objetos.evento;
 
 /**
  *
  * @author Garcia
  */
 public class admin extends javax.swing.JFrame {
- PreparedStatement psInsertar;
-     Connection con;
-     Statement stmmt;
-     ResultSet resultado;
-     DefaultTableModel modelo = new DefaultTableModel();   
+
     /**
      * Creates new form admin
      */
     public admin() {
         initComponents();
         this.setLocationRelativeTo(null);
-        mostrar();
-        id.setEditable(false);
-        
     }
-    public static  Connection getConexion() {
-        Connection cn=null;
-        String url="jdbc:mysql://localhost:3306/trabajofinal";
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            cn=DriverManager.getConnection(url,"root","");         
-        }
-        catch(ClassNotFoundException | SQLException e){
-         System.out.println(String.valueOf(e));}
-        return cn;
-    }
+   
     
-    public static ResultSet getTabla(String Consulta){
-        Connection cn=getConexion();
-        Statement st;
-        ResultSet datos=null;
-        try{
-            st=cn.createStatement();
-            datos=st.executeQuery(Consulta);            
-        }
-        catch(SQLException e){ System.out.print(e.toString());}
-        return datos;
-    }    
+    
     // funcion para rellenar la tabla
-    private void mostrar() {        
-                    
-        ResultSet rs = getTabla("select IDEVENTO,DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO from evento");
-        modelo.setColumnIdentifiers(new Object[]{"IDEVENTO","DESCRIPCION","UBICACIÓN","TIPO","FECHA","ESTADO"});
-        try {
-            while (rs.next()) {
-                // añade los resultado a al modelo de tabla
-                modelo.addRow(new Object[]{
-               rs.getString("IDEVENTO"), 
-                rs.getString("DESCRIPCION"),
-                rs.getString("UBICACIÓN"),
-                rs.getString("TIPO"),
-                 rs.getString("FECHA"),
-                 rs.getString("ESTADO")});
-                
-            }            
-            // asigna el modelo a la tabla
-            table.setModel(modelo);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
 
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,142 +38,19 @@ public class admin extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jButton7 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel10 = new javax.swing.JLabel();
-        nombre2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        fecha2 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        ubicacion2 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        estado2 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
-        tipo2 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Eventos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 80, 20));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 740, 10));
-
-        jButton7.setText("Buscar evento");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(table);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 290, 240));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable2);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 290, 230));
-
-        jLabel2.setText("Invitados");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 740, 10));
-
-        jLabel10.setText("ID");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, -1, -1));
-        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 130, -1));
-
-        jLabel3.setText("Fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
-        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 130, -1));
-
-        jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
-        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 130, -1));
-
-        jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, 20));
-
-        jLabel6.setText("Estado");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, -1, -1));
-        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 130, -1));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setText("Buscar");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 130, -1));
-        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 130, -1));
-
-        jLabel13.setText("Informacion");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 110, -1));
-
-        jLabel5.setText("Nombre del invitado");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 130, -1));
-
-        jLabel15.setText("Descripcion");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
-
-        jLabel16.setText("Descripcion");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 100, -1));
-
-        jLabel17.setText("Tipo de evento");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, -1));
-
-        jLabel4.setText("Fecha");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setText("Informacion");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
 
         jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu2.setText("Menu");
@@ -251,6 +72,15 @@ public class admin extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem3.setText("Ver invitados");
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setText("Ver invitaciones");
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Ver reporte");
+        jMenu2.add(jMenuItem5);
+
         jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Cerrar Seccion ");
@@ -266,30 +96,6 @@ public class admin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        // TODO add your handling code here:
-        int rec = table.getSelectedRow();
-        id.setText(table.getValueAt(rec, 0).toString());
-        nombre2.setText(table.getValueAt(rec, 1).toString());
-        ubicacion2.setText(table.getValueAt(rec, 2).toString());
-        tipo2.setText(table.getValueAt(rec, 3).toString());
-        fecha2.setText(table.getValueAt(rec, 4).toString());
-        String a=table.getValueAt(rec, 5).toString();
-        String b="";
-        if(a.equals("1")){
-             b="Activo";
-        }else if(a.equals("0")){
-             b="Inactivo";
-        }
-        
-        estado2.setText(b);
-    }//GEN-LAST:event_tableMouseClicked
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         // TODO add your handling code here:
@@ -345,43 +151,14 @@ public class admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField estado2;
-    private javax.swing.JTextField fecha2;
-    private javax.swing.JTextField id;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField nombre2;
-    private javax.swing.JTable table;
-    private javax.swing.JTextField tipo2;
-    private javax.swing.JTextField ubicacion2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }
