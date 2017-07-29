@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import objetos.evento;
 
 /**
@@ -81,6 +82,15 @@ public class eventos extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e);
         }
+
+    }
+    private void actualizar(){
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        while(modelo.getRowCount()>0)modelo.removeRow(0);
+ 
+        TableColumnModel modCol = table.getColumnModel();
+        while(modCol.getColumnCount()>0)modCol.removeColumn(modCol.getColumn(0));
+        mostrar();
 
     }
 
@@ -278,11 +288,11 @@ public class eventos extends javax.swing.JFrame {
 
             psInsertar.getResultSet();
             psInsertar.executeUpdate();
-
+            
             JOptionPane.showMessageDialog(null," Los datos se agregador exitosamente");
+            
             table.setModel(modelo);
-            modelo.fireTableDataChanged();
-
+            actualizar();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex);
         }
@@ -290,25 +300,10 @@ public class eventos extends javax.swing.JFrame {
         nombre.setText(null);
         tipo.setText(null);
         ubicacion.setText(null);
-        
-        try {
-            // TODO add your handling code here
-
-            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
-            con = DriverManager.getConnection(url);
-            stmmt= con.createStatement();
-            psInsertar = con.prepareStatement("SELECT * FROM evento");
-
-            
-            psInsertar.getResultSet();
-            psInsertar.executeUpdate();
-
-            table.setModel(modelo);
-            modelo.fireTableDataChanged();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex);
-        }
+                
+           
+     
+      
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -353,7 +348,9 @@ public class eventos extends javax.swing.JFrame {
                 psInsertar.executeUpdate();
 
                 JOptionPane.showMessageDialog(null," Los datos borrados exitosamente");
-
+                table.setModel(modelo);
+                
+                 actualizar();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,ex);
             }
