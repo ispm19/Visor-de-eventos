@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-07-2017 a las 02:09:04
+-- Tiempo de generación: 28-07-2017 a las 19:13:52
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -32,7 +32,7 @@ CREATE TABLE `evento` (
   `UBICACIÓN` varchar(30) NOT NULL,
   `TIPO` varchar(30) NOT NULL,
   `FECHA` date NOT NULL,
-  `ESTADO` bit(30) NOT NULL
+  `ESTADO` bit(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -40,7 +40,8 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`IDEVENTO`, `DESCRIPCION`, `UBICACIÓN`, `TIPO`, `FECHA`, `ESTADO`) VALUES
-(1, 'asd', 'asd', 'asd', '2017-07-26', b'000000011000010111001101100100');
+(4, 'asd', '', 'das', '2017-07-13', b'1'),
+(5, 'sda', 'aaaa', 'sda', '2017-07-30', b'0');
 
 --
 -- Índices para tablas volcadas
@@ -60,7 +61,7 @@ ALTER TABLE `evento`
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `IDEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
