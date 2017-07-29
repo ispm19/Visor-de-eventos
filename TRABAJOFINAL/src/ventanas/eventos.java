@@ -249,6 +249,12 @@ public class eventos extends javax.swing.JFrame {
         estado2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, 130, -1));
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 140, -1));
+
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 130, -1));
         getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 630, 130, -1));
 
@@ -454,6 +460,10 @@ public class eventos extends javax.swing.JFrame {
     private void tipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipo3ActionPerformed
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
 
     /**
      * @param args the command line arguments
