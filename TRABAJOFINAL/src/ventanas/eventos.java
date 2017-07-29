@@ -122,7 +122,6 @@ public class eventos extends javax.swing.JFrame {
         nombre2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        fecha2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         ubicacion2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -130,14 +129,27 @@ public class eventos extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        estado2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        estado = new javax.swing.JComboBox<>();
+        estado2 = new javax.swing.JComboBox<>();
         fecha = new com.toedter.calendar.JDateChooser();
         id = new javax.swing.JTextField();
         tipo2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        fech = new com.toedter.calendar.JDateChooser();
+        estado1 = new javax.swing.JComboBox<>();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel15 = new javax.swing.JLabel();
+        nombre3 = new javax.swing.JTextField();
+        tipo3 = new javax.swing.JTextField();
+        fecha3 = new javax.swing.JTextField();
+        ubicacion3 = new javax.swing.JTextField();
+        estado3 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -188,23 +200,22 @@ public class eventos extends javax.swing.JFrame {
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 360, 10));
 
         jLabel11.setText("EDITAR");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 390, 10));
-        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 130, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, -1, -1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 740, 10));
+        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 130, -1));
 
-        jLabel7.setText("Nombre");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+        jLabel7.setText("Descripcion");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
 
         jLabel3.setText("Fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
-        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 130, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, -1, -1));
 
         jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
-        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 130, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, -1, -1));
+        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 130, -1));
 
         jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, -1, 20));
 
         jLabel10.setText("ID");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
@@ -215,7 +226,7 @@ public class eventos extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 80, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, 80, -1));
 
         jButton10.setText("Borrar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -223,11 +234,10 @@ public class eventos extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 80, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 650, 80, -1));
 
         jLabel2.setText("Estado");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, -1, -1));
-        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 130, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, -1, -1));
 
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
@@ -235,11 +245,11 @@ public class eventos extends javax.swing.JFrame {
         jLabel5.setText("Estado");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
 
-        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        getContentPane().add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 130, -1));
+        estado2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, 130, -1));
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 140, -1));
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 130, -1));
-        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 130, -1));
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, 130, -1));
 
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -248,6 +258,40 @@ public class eventos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 90, 20));
+        getContentPane().add(fech, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 130, -1));
+
+        estado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        getContentPane().add(estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 130, -1));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 390, 10));
+
+        jLabel15.setText("EDITAR");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
+        getContentPane().add(nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 130, -1));
+
+        tipo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipo3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 130, -1));
+        getContentPane().add(fecha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 130, -1));
+        getContentPane().add(ubicacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 130, -1));
+        getContentPane().add(estado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 130, -1));
+
+        jLabel16.setText("Descripcion");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, -1, -1));
+
+        jLabel17.setText("Tipo de evento");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+
+        jLabel18.setText("Fecha");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, -1, -1));
+
+        jLabel19.setText("Ubicacion");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, -1, -1));
+
+        jLabel20.setText("Estado");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,9 +302,9 @@ public class eventos extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         byte a =0;
-        if(estado.getSelectedItem().equals("Activo")){
+        if(estado2.getSelectedItem().equals("Activo")){
             a=1;
-        }else if(estado.getSelectedItem().equals("Inactivo")){
+        }else if(estado2.getSelectedItem().equals("Inactivo")){
             a=0;
         }
         
@@ -310,24 +354,64 @@ public class eventos extends javax.swing.JFrame {
         // TODO add your handling code here:
         int rec = table.getSelectedRow();
         id.setText(table.getValueAt(rec, 0).toString());
-        nombre2.setText(table.getValueAt(rec, 1).toString());
-        ubicacion2.setText(table.getValueAt(rec, 2).toString());
-        tipo2.setText(table.getValueAt(rec, 3).toString());
-        fecha2.setText(table.getValueAt(rec, 4).toString());
+        nombre3.setText(table.getValueAt(rec, 1).toString());
+        ubicacion3.setText(table.getValueAt(rec, 2).toString());
+        tipo3.setText(table.getValueAt(rec, 3).toString());
+        fecha3.setText(table.getValueAt(rec, 4).toString());
         
-        String a=table.getValueAt(rec, 5).toString();
-        String b="";
-        if(a.equals("1")){
-             b="Activo";
-        }else if(a.equals("0")){
-             b="Inactivo";
+        
+        estado3.setText(table.getValueAt(rec, 5).toString());
+        if(estado3.getText().equals(1)){
+            estado3.setText("Activo");
         }
         
-        estado2.setText(b);
     }//GEN-LAST:event_tableMouseClicked
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-   
+        java.util.Date date;
+        java.sql.Date sqldate;
+        date = fech.getDate();
+        
+        sqldate =new java.sql.Date(date.getTime());
+        byte b=0;
+        
+        if(estado2.getSelectedItem().equals("Activo")){
+            b=1;
+        }else if(estado2.getSelectedItem().equals("Inactivo")){
+            b=0;
+        }
+        
+        
+        try {
+            // TODO add your handling code here
+
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            psInsertar = con.prepareStatement("UPDATE evento set DESCRIPCION=?,UBICACIÓN=?,TIPO=?,FECHA=?,ESTADO=? where IDEVENTO='"+id.getText()+"'");
+            
+            psInsertar.setString(1,nombre2.getText());
+            psInsertar.setString(2,ubicacion2.getText());
+            psInsertar.setString(3,tipo2.getText());
+            psInsertar.setDate(4,sqldate);
+            psInsertar.setByte(5,b);
+
+            psInsertar.getResultSet();
+            psInsertar.executeUpdate();
+            psInsertar.execute();
+            
+            JOptionPane.showMessageDialog(null," Los datos se cambiaron exitosamente");
+            
+            nombre2.setText(null);
+            ubicacion2.setText(null);
+            tipo2.setText(null);
+            fech.setDate(null);
+            
+            table.setModel(modelo);
+            actualizar();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
         
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -365,6 +449,10 @@ public class eventos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void tipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipo3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -399,10 +487,12 @@ public class eventos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> estado;
-    private javax.swing.JTextField estado2;
+    private javax.swing.JComboBox<String> estado1;
+    private javax.swing.JComboBox<String> estado2;
+    private javax.swing.JTextField estado3;
+    private com.toedter.calendar.JDateChooser fech;
     private com.toedter.calendar.JDateChooser fecha;
-    private javax.swing.JTextField fecha2;
+    private javax.swing.JTextField fecha3;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -415,7 +505,13 @@ public class eventos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -427,12 +523,16 @@ public class eventos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField nombre2;
+    private javax.swing.JTextField nombre3;
     private javax.swing.JTable table;
     private javax.swing.JTextField tipo;
     private javax.swing.JTextField tipo2;
+    private javax.swing.JTextField tipo3;
     private javax.swing.JTextField ubicacion;
     private javax.swing.JTextField ubicacion2;
+    private javax.swing.JTextField ubicacion3;
     // End of variables declaration//GEN-END:variables
 }
