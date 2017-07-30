@@ -321,10 +321,7 @@ public static  Connection getConexion() {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here
-        if(id.getText().equals(null)){
-            JOptionPane.showMessageDialog(null," Debes seleccionar un valor en la tabla");
-        }else{
-            try {
+       try {
             // TODO add your handling code here
 
             String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
@@ -349,7 +346,7 @@ public static  Connection getConexion() {
             JOptionPane.showMessageDialog(null,ex);
         }
 
-        }
+        
                
     }//GEN-LAST:event_jButton1ActionPerformed
 
