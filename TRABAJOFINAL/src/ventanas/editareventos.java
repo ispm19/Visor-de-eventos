@@ -120,6 +120,7 @@ public static  Connection getConexion() {
         jLabel10 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         estado3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -136,26 +137,26 @@ public static  Connection getConexion() {
                 nombre2ActionPerformed(evt);
             }
         });
-        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 130, -1));
+        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 130, -1));
 
         jLabel7.setText("Descripcion");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jLabel3.setText("Nueva fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         ubicacion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ubicacion2ActionPerformed(evt);
             }
         });
-        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 130, -1));
+        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 130, -1));
 
         jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, 20));
 
         jButton9.setText("Modificar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +167,7 @@ public static  Connection getConexion() {
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 130, -1));
 
         jLabel2.setText("Nuevo estado");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
         estado2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         estado2.addActionListener(new java.awt.event.ActionListener() {
@@ -174,9 +175,9 @@ public static  Connection getConexion() {
                 estado2ActionPerformed(evt);
             }
         });
-        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 130, -1));
-        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 130, -1));
-        getContentPane().add(fech, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, -1));
+        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 130, -1));
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 130, -1));
+        getContentPane().add(fech, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 130, -1));
 
         jLabel6.setText("EVENTOS EN CURSO");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
@@ -188,21 +189,29 @@ public static  Connection getConexion() {
         });
         jScrollPane1.setViewportView(table);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 580, 420));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 580, 470));
 
         id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idActionPerformed(evt);
             }
         });
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 130, -1));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, -1));
 
         jLabel10.setText("ID");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jLabel20.setText("Estado actual");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
-        getContentPane().add(estado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        getContentPane().add(estado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 130, -1));
+
+        jButton1.setText("Borrar ID");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 130, -1));
 
         jMenu1.setText("Salir");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -310,12 +319,47 @@ public static  Connection getConexion() {
         }
     }//GEN-LAST:event_tableMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here
+        if(id.getText().equals(null)){
+            JOptionPane.showMessageDialog(null," Debes seleccionar un valor en la tabla");
+        }else{
+            try {
+            // TODO add your handling code here
+
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            psInsertar = con.prepareStatement("delete from evento where IDEVENTO='"+id.getText()+"'");
+
+            psInsertar.getResultSet();
+            psInsertar.executeUpdate();
+            psInsertar.execute();
+
+            JOptionPane.showMessageDialog(null," Los datos se eliminados exitosamente");
+
+            nombre2.setText(null);
+            ubicacion2.setText(null);
+            tipo2.setText(null);
+            fech.setDate(null);
+
+            table.setModel(modelo);
+            actualizar();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
+
+        }
+               
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> estado2;
     private javax.swing.JTextField estado3;
     private com.toedter.calendar.JDateChooser fech;
     private javax.swing.JTextField id;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
