@@ -109,7 +109,6 @@ public static  Connection getConexion() {
         ubicacion2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         estado2 = new javax.swing.JComboBox<>();
         tipo2 = new javax.swing.JTextField();
@@ -131,26 +130,32 @@ public static  Connection getConexion() {
         jLabel11.setText("EDITAR");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 740, 10));
-        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 130, -1));
+
+        nombre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 130, -1));
 
         jLabel7.setText("Descripcion");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        jLabel3.setText("Fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jLabel3.setText("Nueva fecha");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         jLabel8.setText("Ubicacion");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         ubicacion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ubicacion2ActionPerformed(evt);
             }
         });
-        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 130, -1));
+        getContentPane().add(ubicacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 130, -1));
 
         jLabel9.setText("Tipo de evento");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 20));
 
         jButton9.setText("Modificar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -158,18 +163,10 @@ public static  Connection getConexion() {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 80, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 130, -1));
 
-        jButton10.setText("Borrar");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 80, -1));
-
-        jLabel2.setText("Estado");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+        jLabel2.setText("Nuevo estado");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
 
         estado2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         estado2.addActionListener(new java.awt.event.ActionListener() {
@@ -177,9 +174,9 @@ public static  Connection getConexion() {
                 estado2ActionPerformed(evt);
             }
         });
-        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 130, -1));
-        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 130, -1));
-        getContentPane().add(fech, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 130, -1));
+        getContentPane().add(estado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 130, -1));
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 130, -1));
+        getContentPane().add(fech, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, -1));
 
         jLabel6.setText("EVENTOS EN CURSO");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
@@ -191,7 +188,7 @@ public static  Connection getConexion() {
         });
         jScrollPane1.setViewportView(table);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 580, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 580, 420));
 
         id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,9 +200,9 @@ public static  Connection getConexion() {
         jLabel10.setText("ID");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        jLabel20.setText("Estado");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, -1, -1));
-        getContentPane().add(estado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 460, 130, -1));
+        jLabel20.setText("Estado actual");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        getContentPane().add(estado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
 
         jMenu1.setText("Salir");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,32 +279,6 @@ public static  Connection getConexion() {
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-
-        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " +id.getText());
-        if(respuesta==JOptionPane.YES_OPTION){
-            try {
-                // TODO add your handling code here
-
-                String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
-                con = DriverManager.getConnection(url);
-                stmmt= con.createStatement();
-                psInsertar = con.prepareStatement("DELETE FROM evento WHERE IDEVENTO='"+id.getText()+"'");
-
-                psInsertar.getResultSet();
-                psInsertar.executeUpdate();
-
-                JOptionPane.showMessageDialog(null," Los datos borrados exitosamente");
-                table.setModel(modelo);
-
-                actualizar();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex);
-            }
-        }
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void estado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estado2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_estado2ActionPerformed
@@ -316,26 +287,28 @@ public static  Connection getConexion() {
         // TODO add your handling code here:
     }//GEN-LAST:event_ubicacion2ActionPerformed
 
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
+
+    private void nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre2ActionPerformed
+
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
         int rec = table.getSelectedRow();
         id.setText(table.getValueAt(rec, 0).toString());
-        nombre3.setText(table.getValueAt(rec, 1).toString());
-        ubicacion3.setText(table.getValueAt(rec, 2).toString());
-        tipo3.setText(table.getValueAt(rec, 3).toString());
-        fecha3.setText(table.getValueAt(rec, 4).toString());
+        nombre2.setText(table.getValueAt(rec, 1).toString());
+        ubicacion2.setText(table.getValueAt(rec, 2).toString());
+        tipo2.setText(table.getValueAt(rec, 3).toString());
 
         if(table.getValueAt(rec, 5).toString().equals("1")){
             estado3.setText("Activo");
         }else if(table.getValueAt(rec, 5).toString().equals("0")){
             estado3.setText("Inactivo");
         }
-
     }//GEN-LAST:event_tableMouseClicked
-
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -343,7 +316,6 @@ public static  Connection getConexion() {
     private javax.swing.JTextField estado3;
     private com.toedter.calendar.JDateChooser fech;
     private javax.swing.JTextField id;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
