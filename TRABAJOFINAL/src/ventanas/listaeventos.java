@@ -5,17 +5,77 @@
  */
 package ventanas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Garcia
  */
 public class listaeventos extends javax.swing.JInternalFrame {
-
+PreparedStatement psInsertar;
+     Connection con;
+     Statement stmmt;
+     ResultSet resultado;
+     DefaultTableModel modelo = new DefaultTableModel(); 
     /**
      * Creates new form listaeventos
      */
     public listaeventos() {
         initComponents();
+    mostrar();
+    }
+     public static  Connection getConexion() {
+        Connection cn=null;
+        String url="jdbc:mysql://localhost:3306/trabajofinal";
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            cn=DriverManager.getConnection(url,"root","");         
+        }
+        catch(ClassNotFoundException | SQLException e){
+         System.out.println(String.valueOf(e));}
+        return cn;
+    }
+    
+    public static ResultSet getTabla(String Consulta){
+        Connection cn=getConexion();
+        Statement st;
+        ResultSet datos=null;
+        try{
+            st=cn.createStatement();
+            datos=st.executeQuery(Consulta);            
+        }
+        catch(SQLException e){ System.out.print(e.toString());}
+        return datos;
+    }    
+    // funcion para rellenar la tabla
+    private void mostrar() {        
+                    
+        ResultSet rs = getTabla("select IDEVENTO,DESCRIPCION,UBICACIÓN,TIPO,FECHA,ESTADO from evento");
+        modelo.setColumnIdentifiers(new Object[]{"IDEVENTO","DESCRIPCION","UBICACIÓN","TIPO","FECHA","ESTADO"});
+        try {
+            while (rs.next()) {
+                // añade los resultado a al modelo de tabla
+                modelo.addRow(new Object[]{
+               rs.getString("IDEVENTO"), 
+                rs.getString("DESCRIPCION"),
+                rs.getString("UBICACIÓN"),
+                rs.getString("TIPO"),
+                 rs.getString("FECHA"),
+                 rs.getString("ESTADO")});
+                
+            }            
+            // asigna el modelo a la tabla
+            table.setModel(modelo);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
     }
 
     /**
@@ -27,26 +87,35 @@ public class listaeventos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 240, -1));
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(table);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 760, 280));
 
         jMenu1.setText("Salir");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -62,40 +131,6 @@ public class listaeventos extends javax.swing.JInternalFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jButton1)))
-                .addContainerGap(81, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jButton1)
-                .addContainerGap(150, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(111, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(20, Short.MAX_VALUE)))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,9 +154,9 @@ public class listaeventos extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
