@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/segundo/Documents/GitHub/Visor-de-eventos/TRABAJOFINAL/src/ventanas/login.java</file>
             <file>file:/C:/Users/segundo/Documents/GitHub/Visor-de-eventos/TRABAJOFINAL/src/ventanas/portero.java</file>
             <file>file:/C:/Users/segundo/Documents/GitHub/Visor-de-eventos/TRABAJOFINAL/src/ventanas/Registro.java</file>
             <file>file:/C:/Users/segundo/Documents/GitHub/Visor-de-eventos/TRABAJOFINAL/src/ventanas/admin.java</file>
+=======
+            <file>file:/C:/Users/Garcia/Documents/GitHub/Visor-de-eventos/TRABAJOFINAL/src/ventanas/admin.java</file>
+            <file>file:/C:/Users/Garcia/Documents/GitHub/Visor-de-eventos/TRABAJOFINAL/src/ventanas/agregareventos.java</file>
+            <file>file:/C:/Users/Garcia/Documents/GitHub/Visor-de-eventos/TRABAJOFINAL/src/ventanas/listaeventos.java</file>
+>>>>>>> 77ae8e911743e6bad17efb75bf6cc755842daa00
         </group>
     </open-files>
 </project-private>
