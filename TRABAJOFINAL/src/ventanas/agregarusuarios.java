@@ -4,20 +4,77 @@
  * and open the template in the editor.
  */
 package ventanas;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Garcia
  */
 public class agregarusuarios extends javax.swing.JInternalFrame {
 
+        private Connection conectar;
+
+        public void enviar_datos(){
+            PreparedStatement setencia;
+     Connection con;
+     Statement stmmt;
+		
+      byte a =0;
+        if(estado.getSelectedItem().equals("Activo")){
+            a=1;
+        }else if(estado.getSelectedItem().equals("Inactivo")){
+            a=0;
+        }
+        
+       try {
+            String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
+            con = DriverManager.getConnection(url);
+            stmmt= con.createStatement();
+            
+			final String consulta="INSERT INTO usuarios (NombreUsuario, Password,NombreCompleto,TipoUsuario,Estado ) VALUES(?,?,?,?,?)";
+			
+                        setencia = con.prepareStatement(consulta);			
+			setencia.setString(1, nombre.getText());
+			setencia.setString(2, pass.getText());
+			setencia.setString(3,nombrec.getText());
+			setencia.setString(4, (String) tipo.getSelectedItem());
+                        setencia.setByte(5,a);
+			
+			nombre.setText("");
+			pass.setText("");
+			nombrec.setText("");
+			tipo.setSelectedItem("");
+			
+                        setencia.getResultSet();
+                        setencia.executeUpdate();
+            
+                        JOptionPane.showMessageDialog(null, "El usuario se ha registrado con excito");
+                        
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null,e);
+		}
+        }
     /**
      * Creates new form agregarusuarios
      */
     public agregarusuarios() {
         initComponents();
     }
-
+ public static  Connection getConexion() {
+        Connection cn=null;
+        String url="jdbc:mysql://localhost:3306/trabajofinal";
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            cn=DriverManager.getConnection(url,"root","");         
+        }
+        catch(ClassNotFoundException | SQLException e){
+         System.out.println(String.valueOf(e));}
+        return cn;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,8 +84,71 @@ public class agregarusuarios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        pass = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        nombrec = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        tipo = new javax.swing.JComboBox<>();
+        estado = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setText("Registrar usuarios");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 210, 30));
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel2.setText("Nombre Usuario ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 120, -1));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel3.setText("Contraseña");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 120, -1));
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel4.setText("Nombre Completo");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        nombrec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombrecActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nombrec, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 120, -1));
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel5.setText("Tipo de usuario");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+
+        tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Administrador" }));
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 120, -1));
+
+        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        getContentPane().add(estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel6.setText("Estado");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 40, -1));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 70, -1));
 
         jMenu1.setText("Salir");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -45,17 +165,6 @@ public class agregarusuarios extends javax.swing.JInternalFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 257, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -68,9 +177,30 @@ public class agregarusuarios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        enviar_datos();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nombrecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrecActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombrecActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> estado;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField nombrec;
+    private javax.swing.JPasswordField pass;
+    private javax.swing.JComboBox<String> tipo;
     // End of variables declaration//GEN-END:variables
 }
