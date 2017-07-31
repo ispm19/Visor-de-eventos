@@ -62,6 +62,7 @@ public class login extends javax.swing.JFrame {
                 
     }else {
    JOptionPane.showMessageDialog(null,"Usuario o Password incorrecta");
+   
    }
     }
    
