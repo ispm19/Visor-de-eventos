@@ -102,7 +102,6 @@ private void actualizar(){
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        label = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -132,9 +131,6 @@ private void actualizar(){
         jLabel1.setText("Fecha del evento");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
 
-        label.setText("jLabel2");
-        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
         jMenu1.setText("Salir");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,25 +151,32 @@ private void actualizar(){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
+       java.util.Date date;
+        java.sql.Date sqldate;
+        date = fecha.getDate();
+
+        sqldate =new java.sql.Date(date.getTime());
+        
         try {
             // TODO add your handling code here
 
             String url="jdbc:mysql://localhost:3306/trabajofinal?user=root";
             con = DriverManager.getConnection(url);
             stmmt= con.createStatement();
-            psInsertar = con.prepareStatement( "select * from evento where FECHA like '%" +fecha.getDate()+ "%'");
+            psInsertar = con.prepareStatement("SELECT * from evento where FECHA LIKE '%"+sqldate+"%'");
 
             psInsertar.getResultSet();
             psInsertar.executeUpdate();
             psInsertar.execute();
-            table.setModel(modelo);
+
             
+            table.setModel(modelo);
             actualizar();
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -194,7 +197,6 @@ private void actualizar(){
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel label;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
