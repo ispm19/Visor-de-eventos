@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-07-2017 a las 13:03:41
--- Versión del servidor: 5.7.14
--- Versión de PHP: 5.6.25
+-- Tiempo de generación: 02-08-2017 a las 00:40:41
+-- Versión del servidor: 10.1.25-MariaDB
+-- Versión de PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -35,6 +37,13 @@ CREATE TABLE `evento` (
   `ESTADO` bit(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `evento`
+--
+
+INSERT INTO `evento` (`IDEVENTO`, `DESCRIPCION`, `UBICACIÓN`, `TIPO`, `FECHA`, `ESTADO`) VALUES
+(34, 'aaaaaaaaaa', 'aaaaa', 'aaaaaaaaa', '2017-08-09', b'1111111111111111111111111111111');
+
 -- --------------------------------------------------------
 
 --
@@ -60,10 +69,11 @@ CREATE TABLE `invitado` (
   `NOMBRE` varchar(30) NOT NULL,
   `SEXO` varchar(30) NOT NULL,
   `EMAIL` varchar(30) NOT NULL,
-  `FECHA NACIMIENTO` date NOT NULL,
+  `FECHA` date NOT NULL,
   `DIRECCION` varchar(30) NOT NULL,
   `TELEFONO` varchar(30) NOT NULL,
-  `ESTADO` bit(2) NOT NULL
+  `ESTADO` bit(2) NOT NULL,
+  `APELLIDO` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -86,9 +96,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `NombreUsuario`, `Password`, `NombreCompleto`, `TipoUsuario`, `Estado`) VALUES
-(2, 'asdasd', 'asd', 'asd', 'Portero', b'01'),
-(3, 'warlyn', 'asd', 'warlyn g', 'Administrador', b'01'),
-(4, 'warlyn', 'qwe', 'a', 'Portero', b'01');
+(2, 'asdasd', 'asd', 'asd', 'Portero', b'1111111111111111111111111111111'),
+(3, 'warlyn', 'asd', 'warlyn g', 'Administrador', b'1111111111111111111111111111111'),
+(4, 'warlyn', 'qwe', 'a', 'Portero', b'1111111111111111111111111111111'),
+(5, 'admin', 'admin', 'adminis', 'Administrador', b'1111111111111111111111111111111'),
+(6, 'port', 'port', 'portero', 'Portero', b'1111111111111111111111111111111');
 
 --
 -- Índices para tablas volcadas
@@ -126,7 +138,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `IDEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `IDEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `invitacion`
 --
@@ -141,7 +153,8 @@ ALTER TABLE `invitado`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
